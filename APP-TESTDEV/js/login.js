@@ -80,6 +80,7 @@ function doLogin() {
         })
         .fail(function (xhRequest, ErrorText, thrownError) { console.log(xhRequest.status + ', ' + ErrorText + ', ' + thrownError); $('#loginAjax').hide(); });
     });
+    
     $('#skipandGotoApp2').on('tap',function() {
         var skipOBJ = eval(usrObj.data);
         console.log( skipOBJ );
