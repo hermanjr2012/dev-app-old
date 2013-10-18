@@ -35,6 +35,7 @@ function doSetup() {
     
     keepOnTop();    
     
+    getUserOBJ();
 }
 
 function shouldRotateToOrientation(orientation) {  

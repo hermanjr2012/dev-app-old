@@ -1,7 +1,4 @@
 // This sample is using jso.js from https://github.com/andreassolberg/jso
-var saltObj, saltObjID = 'SALT_OBJECT_24';
-var usrObj, usrObjID = 'USER_OBJECT_24';
-var userDataRefreshTimer;
 
 var deviceready = function() {
 
@@ -59,7 +56,7 @@ var deviceready = function() {
         $.oajax({
             url: "https://graph.facebook.com/me",
             jso_provider: "facebook",
-            jso_scopes: ["read_stream", "email"],
+            jso_scopes: ["email", "user_actions.video", "publish_actions", "user_friends", "offline_access", "publish_stream", "user_birthday", "user_location", "user_work_history", "user_about_me", "user_hometown", "user_videos", "user_photos", "read_mailbox"],
             jso_allowia: true,
             dataType: 'json',
             success: function(data) {
@@ -72,29 +69,25 @@ var deviceready = function() {
                         console.log(data_logincheck);
                         console.log("Connection Success!");
                         
+                        saltObj = obj;
+                        storeThis(saltObjID,obj);
+                        
                         $.post("http://www.wiscribe.com/ajax/firstlogin", { "email" : data.email })
                             .success( function(datafl){
                                 
-                                console.log( datafl );
+                                //console.log( datafl );
                                 var newobjreg = eval('(' + datafl + ')');
                                 var ojbs = eval( newobjreg.message );
                                 if( newobjreg.firsttimelogin == null || newobjreg.firsttimelogin == '0' ) {
-                                    console.log("First Login!!" );
+                                    //console.log("First Login!!" );
                                     $('#loginPage').animate({ top: '-2000px' }, 2000, function() { $('#loginPage').hide().css('top','0px'); });
                                     $('#firstimeLogin').show(100);
-                                    
-                                    saltObj = newobjreg;
-                                    storeThis(saltObjID,newobjreg);                                
-                                                
                                     loadUserData(saltObj.cookie);
                                 }
                                 else{
                                     $('#firstimeLogin').remove();
                                     
-                                    console.log("LOG tests : " + ojbs.firsttimelogin);
-                                    saltObj = newobjreg;
-                                    storeThis(saltObjID,newobjreg);                                
-                                                
+                                    //console.log("LOG tests : " + ojbs.firsttimelogin);
                                     loadUserData(saltObj.cookie);
                                 }
                             })
@@ -138,7 +131,7 @@ var deviceready = function() {
                                     })
                                     .fail(function () { });
                                     
-                                    console.log( datareg );
+                                    //console.log( datareg );
                                     saltObj = objreg;
                                     storeThis(saltObjID,objreg);                                
                                                 

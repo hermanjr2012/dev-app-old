@@ -32,11 +32,11 @@ function doLogin() {
                     $.post("http://www.wiscribe.com/ajax/firstlogin", { "email" : email })
                         .success( function(datafl){
                             
-                            console.log( datafl )
+                            //console.log( datafl )
                             var newobjreg = eval('(' + datafl + ')');
                             var ojbs = eval( newobjreg.message );
                             if( ojbs.firsttimelogin == null || ojbs.firsttimelogin == '0' ) {
-                                console.log("First Login!!");
+                                //console.log("First Login!!");
                                 $('#loginPage').animate({ top: '-2000px' }, 2000, function() { $('#loginPage').hide().css('top','0px'); });
                                 $('#firstimeLogin').show(100);
                                 
@@ -48,7 +48,7 @@ function doLogin() {
                             else{
                                 $('#firstimeLogin').remove();
                                 
-                                console.log("LOG tests : " + ojbs.firsttimelogin);
+                                //console.log("LOG tests : " + ojbs.firsttimelogin);
                                 saltObj = newobjreg;
                                 storeThis(saltObjID,newobjreg);                                
                                             
@@ -67,44 +67,14 @@ function doLogin() {
         
     });
     
-    $('#skipandGotoApp').on('tap',function() {
-        var skipOBJ = eval(usrObj.data);
-        console.log( skipOBJ );
-        $.post("http://www.wiscribe.com/ajax/firstlogin", {
-                    "email" : skipOBJ.email,
-                    "update_user_firstlog" : 1,
-                    crossDomain: true
-                })
-        .success(function(data) {
-            console.log( data );
-            $('#firstimeLogin').hide();
-        })
-        .fail(function (xhRequest, ErrorText, thrownError) { console.log(xhRequest.status + ', ' + ErrorText + ', ' + thrownError); $('#loginAjax').hide(); });
-    });
     
-    $('#skipandGotoApp2').on('tap',function() {
-        var skipOBJ = eval(usrObj.data);
-        console.log( skipOBJ );
-        $.post("http://www.wiscribe.com/ajax/firstlogin", {
-                    "email" : skipOBJ.email,
-                    "update_user_firstlog" : 1,
-                    crossDomain: true
-                })
-        .success(function(data) {
-            console.log( data );
-            $('#firstimeLogin').hide();
-        })
-        .fail(function (xhRequest, ErrorText, thrownError) { console.log(xhRequest.status + ', ' + ErrorText + ', ' + thrownError); $('#loginAjax').hide(); });
-    });
-    $('#gotonext2').on('tap',function() {        
-        $('#firstimeLogin').hide();
-    });
+    
     
 };
 
 
 function loadUserData(id) {
-   
+    
     $.post("http://www.lifestimecapsule.com/ajax/retrieve/profile", { "uuid": id, crossDomain: true })
         .success(function(data) { 
             var obj = eval('(' + data + ')'); 
@@ -190,4 +160,60 @@ function logUserOut() {
     
     $('.open-close').trigger('collapse');
     $('#photo, #audio, #journal, #audio').val('');
+}
+
+function getUserOBJ(){
+    
+    $('#skipandGotoApp').on('tap',function() {
+        $.post("http://www.wiscribe.com/ajax/firstlogin", {
+                    "email" : usrObj.data.email,
+                    "update_user_firstlog" : 1,
+                    crossDomain: true
+                })
+        .success(function(data) {
+            toastr.info('Synchronizing to Facebook...');
+        
+            var fbobj = eval( getThis('tokens-facebook') ); 
+            //console.log( fbobj['0'].access_token );
+            
+            $.post("http://www.wiscribe.com/ajax/mobilefbsync", { "uuid": saltObj.cookie, "fbtoken" : fbobj['0'].access_token, crossDomain: true })
+            .success(function(data) {
+                toastr.success('You have successfully Imported your Photos from Facebook', 'Facebook');
+                 $('#firstimeLogin').hide();
+            })
+            .fail(function (xhRequest, ErrorText, thrownError) { console.log(xhRequest.status + ', ' + ErrorText + ', ' + thrownError);  });
+        })
+        .fail(function (xhRequest, ErrorText, thrownError) { console.log(xhRequest.status + ', ' + ErrorText + ', ' + thrownError); $('#loginAjax').hide(); });
+    });
+    
+    $('#skipandGotoApp2').on('tap',function() {
+        $.post("http://www.wiscribe.com/ajax/firstlogin", {
+                    "email" : usrObj.data.email,
+                    "update_user_firstlog" : 1,
+                    crossDomain: true
+                })
+        .success(function(data) {
+            //console.log( data );
+            
+            toastr.info('Synchronizing to Facebook...');
+        
+            var fbobj = eval( getThis('tokens-facebook') ); 
+            //console.log( fbobj['0'].access_token );
+            
+            $.post("http://www.wiscribe.com/ajax/mobilefbsync", { "uuid": saltObj.cookie, "fbtoken" : fbobj['0'].access_token, crossDomain: true })
+            .success(function(data) {
+                toastr.success('You have successfully Imported your Photos from Facebook', 'Facebook');
+                 $('#firstimeLogin').hide();
+            })
+            .fail(function (xhRequest, ErrorText, thrownError) { console.log(xhRequest.status + ', ' + ErrorText + ', ' + thrownError);  });
+            
+           
+        })
+        .fail(function (xhRequest, ErrorText, thrownError) { console.log(xhRequest.status + ', ' + ErrorText + ', ' + thrownError); $('#loginAjax').hide(); });
+    });
+    
+    
+    $('#gotonext2').on('tap',function() {        
+        $('#firstimeLogin').hide();
+    });
 }
