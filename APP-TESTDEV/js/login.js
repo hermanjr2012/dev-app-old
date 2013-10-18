@@ -31,6 +31,7 @@ function doLogin() {
                     
                     $.post("http://www.wiscribe.com/ajax/firstlogin", { "email" : email })
                         .success( function(datafl){
+                            
                             console.log( datafl )
                             var newobjreg = eval('(' + datafl + ')');
                             var ojbs = eval( newobjreg.message );

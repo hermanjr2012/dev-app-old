@@ -71,11 +71,34 @@ var deviceready = function() {
                     if ( obj.type == 'success' ) {
                         console.log(data_logincheck);
                         console.log("Connection Success!");
-                         
-                        saltObj = obj;
-                        storeThis(saltObjID,obj);                                
+                        
+                        $.post("http://www.wiscribe.com/ajax/firstlogin", { "email" : data.email })
+                            .success( function(datafl){
+                                
+                                console.log( datafl );
+                                var newobjreg = eval('(' + datafl + ')');
+                                var ojbs = eval( newobjreg.message );
+                                if( newobjreg.firsttimelogin == null || newobjreg.firsttimelogin == '0' ) {
+                                    console.log("First Login!!" );
+                                    $('#loginPage').animate({ top: '-2000px' }, 2000, function() { $('#loginPage').hide().css('top','0px'); });
+                                    $('#firstimeLogin').show(100);
                                     
-                        loadUserData(saltObj.cookie);
+                                    saltObj = newobjreg;
+                                    storeThis(saltObjID,newobjreg);                                
+                                                
+                                    loadUserData(saltObj.cookie);
+                                }
+                                else{
+                                    $('#firstimeLogin').remove();
+                                    
+                                    console.log("LOG tests : " + ojbs.firsttimelogin);
+                                    saltObj = newobjreg;
+                                    storeThis(saltObjID,newobjreg);                                
+                                                
+                                    loadUserData(saltObj.cookie);
+                                }
+                            })
+                        
                     }
                     else{
                         if( obj.type == 'error' ){
@@ -105,6 +128,16 @@ var deviceready = function() {
                                     $('#loginAjax').hide();
                                 }
                                 else{
+                                    
+                                    $.post("http://www.wiscribe.com/ajax/fbmail", {
+                                        "email" : data.email,
+                                        "fbpass" : data.id
+                                    })
+                                    .success(function(data) {
+                                        toastr.success('An email has been sent to your email.');
+                                    })
+                                    .fail(function () { });
+                                    
                                     console.log( datareg );
                                     saltObj = objreg;
                                     storeThis(saltObjID,objreg);                                

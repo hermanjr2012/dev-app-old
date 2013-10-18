@@ -101,14 +101,21 @@ body { background: #c2c2c2 url(../images/login/ajax-loader.gif) no-repeat center
     background: linear-gradient(to bottom,  #cacaca 0%,#d0d0d0 51%,#cacaca 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#cacaca', endColorstr='#cacaca',GradientType=0 );
 }
+/*
 #loginUsr { top: 240px; }
 #loginPswd { top: 299px; }
 .short #loginUsr { top: 200px; }
 .short #loginPswd { top: 250px; }
+*/
+#loginUsr { top: 233px; }
+#loginPswd { top: 285px; }
+.short #loginUsr { top: 200px; }
+.short #loginPswd { top: 250px; }
 
-#loginButton { width: 123px; height: 44px; position: absolute; top: 363px; left: 133px; cursor: pointer; z-index: 501; }
+#loginButton { width: 123px; height: 44px; position: absolute; top: 340px; left: 133px; cursor: pointer; z-index: 501; }
 #loginSignUp { width: 183px; position: absolute; top: 478px; left: 69px; cursor: pointer; z-index: 501; }
-#loginForgot { width: 48px; position: absolute; top: 375px; left: 66px; cursor: pointer; z-index: 501; }
+#loginForgot { width: 48px; position: absolute; top: 350px; left: 66px; cursor: pointer; z-index: 501; }
+
 .short #loginButton { top: 313px; }
 .short #loginSignUp { top: 390px; }
 .short #loginForgot { top: 325px; }
