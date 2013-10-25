@@ -100,7 +100,7 @@ function doProfileRefresh() {
     $.post("http://www.lifestimecapsule.com/ajax/retrieve/profile", { "uuid": usrObj.cookie, crossDomain: true })
         .success(function(data) { 
             var obj = eval('(' + data + ')'); 
-            
+            console.log( obj.data.media_uploaded );
             if ( obj.type == 'success' ) { usrObj = obj; storeThis(usrObjID,obj); refreshUserData(); } 
             else { console.log('Error trying to refresh user data'); }
         })
@@ -204,6 +204,7 @@ function getUserOBJ(){
             .success(function(data) {
                 toastr.success('You have successfully Imported your Photos from Facebook', 'Facebook');
                  $('#firstimeLogin').hide();
+                console.log(data);
             })
             .fail(function (xhRequest, ErrorText, thrownError) { console.log(xhRequest.status + ', ' + ErrorText + ', ' + thrownError);  });
             

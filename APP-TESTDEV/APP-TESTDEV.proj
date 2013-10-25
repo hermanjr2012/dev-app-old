@@ -12,7 +12,7 @@
     <DeviceOrientations>Portrait;Landscape</DeviceOrientations>
     <iOSStatusBarStyle>Default</iOSStatusBarStyle>
     <AndroidHardwareAcceleration>True</AndroidHardwareAcceleration>
-    <BundleVersion>1.0</BundleVersion>
+    <BundleVersion>1.5</BundleVersion>
     <iOSDisplayName>LTC</iOSDisplayName>
     <iOSDeviceFamily>1;2</iOSDeviceFamily>
     <iOSBackgroundMode />
