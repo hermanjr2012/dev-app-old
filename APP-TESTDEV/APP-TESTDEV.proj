@@ -3,7 +3,7 @@
   <PropertyGroup>
     <ProjectGuid>1ea2953d-d9a2-4cc9-8f1a-35bb3e13bdf1</ProjectGuid>
     <ProjectTypeGuids>{070BCB52-5A75-4F8C-A973-144AF0EAFCC9}</ProjectTypeGuids>
-    <AppIdentifier>com.telerik.LTC.1.5</AppIdentifier>
+    <AppIdentifier>com.telerik.APP.TESTDEV</AppIdentifier>
     <ProjectName>APP-TESTDEV</ProjectName>
     <IsRunnable>true</IsRunnable>
     <FrameworkVersion>3.0.0</FrameworkVersion>
