@@ -93,7 +93,8 @@ photoApp.prototype={
 	},    
     
     _onFail: function(error) {
-        toastr.error('Failed! Error: ' + error.code);
+        //toastr.error('Failed! Error: ' + error.code);
+        toastr.error('No Photo Taken!','Photo Upload Error');
     },
     
     
@@ -133,7 +134,7 @@ photoApp.prototype={
     },
     
     _onLibraryFail: function(message) {
-        alert('Failed! Error: ' + message);
+        alert('No Photos Selected!','Photo Upload Error');
     },
     
 }
