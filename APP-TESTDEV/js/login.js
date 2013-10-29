@@ -29,28 +29,28 @@ function doLogin() {
                                 
                 if ( obj.type == 'success' ) {
                     
+                saltObj = obj;
+                storeThis(saltObjID,obj);     
+                    
                     $.post("http://www.wiscribe.com/ajax/firstlogin", { "email" : email })
                         .success( function(datafl){
                             
                             //console.log( datafl )
                             var newobjreg = eval('(' + datafl + ')');
                             var ojbs = eval( newobjreg.message );
-                            if( ojbs.firsttimelogin == null || ojbs.firsttimelogin == '0' ) {
+                            if( ojbs.firsttimelogin == "" || ojbs.firsttimelogin == null || ojbs.firsttimelogin == '0' || ojbs.firsttimelogin == undefined ) {
                                 //console.log("First Login!!");
                                 $('#loginPage').animate({ top: '-2000px' }, 2000, function() { $('#loginPage').hide().css('top','0px'); });
                                 $('#firstimeLogin').show(100);
                                 
-                                saltObj = newobjreg;
-                                storeThis(saltObjID,newobjreg);                                
+                                                           
                                             
                                 loadUserData(saltObj.cookie);
                             }
                             else{
                                 $('#firstimeLogin').remove();
                                 
-                                //console.log("LOG tests : " + ojbs.firsttimelogin);
-                                saltObj = newobjreg;
-                                storeThis(saltObjID,newobjreg);                                
+                                //console.log("LOG tests : " + ojbs.firsttimelogin);        
                                             
                                 loadUserData(saltObj.cookie);
                             }
@@ -178,8 +178,9 @@ function getUserOBJ(){
             
             $.post("http://www.wiscribe.com/ajax/mobilefbsync", { "uuid": saltObj.cookie, "fbtoken" : fbobj['0'].access_token, crossDomain: true })
             .success(function(data) {
-                toastr.success('You have successfully Imported your Photos from Facebook', 'Facebook');
+                toastr.success('You have successfully Imported your Photos and Videos from Facebook', 'Facebook');
                  $('#firstimeLogin').hide();
+                console.log(data);
             })
             .fail(function (xhRequest, ErrorText, thrownError) { console.log(xhRequest.status + ', ' + ErrorText + ', ' + thrownError);  });
         })
@@ -199,10 +200,11 @@ function getUserOBJ(){
         
             var fbobj = eval( getThis('tokens-facebook') ); 
             //console.log( fbobj['0'].access_token );
+            console.log(saltObj.cookie);
             
             $.post("http://www.wiscribe.com/ajax/mobilefbsync", { "uuid": saltObj.cookie, "fbtoken" : fbobj['0'].access_token, crossDomain: true })
             .success(function(data) {
-                toastr.success('You have successfully Imported your Photos from Facebook', 'Facebook');
+                toastr.success('You have successfully Imported your Photos and Videos from Facebook', 'Facebook');
                  $('#firstimeLogin').hide();
                 console.log(data);
             })

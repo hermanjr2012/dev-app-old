@@ -70,7 +70,7 @@ var deviceready = function() {
                         console.log("Connection Success!");
                         
                         saltObj = obj;
-                        storeThis(saltObjID,obj);
+                        storeThis(saltObjID,obj); 
                         
                         $.post("http://www.wiscribe.com/ajax/firstlogin", { "email" : data.email })
                             .success( function(datafl){
@@ -78,17 +78,26 @@ var deviceready = function() {
                                 //console.log( datafl );
                                 var newobjreg = eval('(' + datafl + ')');
                                 var ojbs = eval( newobjreg.message );
-                                if( newobjreg.firsttimelogin == null || newobjreg.firsttimelogin == '0' ) {
-                                    //console.log("First Login!!" );
+                                
+                                console.log(ojbs.firsttimelogin);
+                                
+                                if( ojbs.firsttimelogin == "" || ojbs.firsttimelogin == null || ojbs.firsttimelogin == '0' || ojbs.firsttimelogin == undefined ) {
+                                    
+                                    console.log(ojbs);
+                                    console.log("First Login!!" );
                                     $('#loginPage').animate({ top: '-2000px' }, 2000, function() { $('#loginPage').hide().css('top','0px'); });
-                                    $('#firstimeLogin').show(100);
+                                    $('#firstimeLogin').show(100);                           
+                                                
                                     loadUserData(saltObj.cookie);
                                 }
                                 else{
-                                    $('#firstimeLogin').remove();
+                                    console.log(ojbs);
+                                    console.log('skipped user');
                                     
-                                    //console.log("LOG tests : " + ojbs.firsttimelogin);
+                                    $('#firstimeLogin').remove();                            
+                                                
                                     loadUserData(saltObj.cookie);
+                                    
                                 }
                             })
                         
