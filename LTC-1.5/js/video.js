@@ -53,7 +53,7 @@ videoApp.prototype={
             function() { videoApp._onFail.apply(that, arguments); }
         ,{
             limit:1,
-            duration: 30
+            duration: 40000
         });
 	},    
     
