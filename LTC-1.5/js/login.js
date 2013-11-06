@@ -160,7 +160,7 @@ function logUserOut() {
     
     $('.open-close').trigger('collapse');
     $('#photo, #audio, #journal, #audio').val('');
-    jso_wipe();
+    jso_dump();
 }
 
 function getUserOBJ(){
