@@ -100,7 +100,7 @@ function doProfileRefresh() {
     $.post("http://www.lifestimecapsule.com/ajax/retrieve/profile", { "uuid": usrObj.cookie, crossDomain: true })
         .success(function(data) { 
             var obj = eval('(' + data + ')'); 
-            console.log( obj.data.media_uploaded );
+            //console.log( obj.data.media_uploaded );
             if ( obj.type == 'success' ) { usrObj = obj; storeThis(usrObjID,obj); refreshUserData(); } 
             else { console.log('Error trying to refresh user data'); }
         })
@@ -115,7 +115,7 @@ function hideLogin(speed) {
 }
  
 function refreshUserData() {
-    console.log('refreshing data for ' + usrObj.data.display_name);
+    //console.log('refreshing data for ' + usrObj.data.display_name);
     keepOnTop();
 
     var d = Date.parse(usrObj.data.created);
@@ -160,6 +160,7 @@ function logUserOut() {
     
     $('.open-close').trigger('collapse');
     $('#photo, #audio, #journal, #audio').val('');
+    jso_wipe();
 }
 
 function getUserOBJ(){
@@ -172,17 +173,53 @@ function getUserOBJ(){
                 })
         .success(function(data) {
             toastr.info('Synchronizing to Facebook...');
-        
-            var fbobj = eval( getThis('tokens-facebook') ); 
-            //console.log( fbobj['0'].access_token );
             
-            $.post("http://www.wiscribe.com/ajax/mobilefbsync", { "uuid": saltObj.cookie, "fbtoken" : fbobj['0'].access_token, crossDomain: true })
-            .success(function(data) {
-                toastr.success('You have successfully Imported your Photos and Videos from Facebook', 'Facebook');
-                 $('#firstimeLogin').hide();
-                console.log(data);
-            })
-            .fail(function (xhRequest, ErrorText, thrownError) { console.log(xhRequest.status + ', ' + ErrorText + ', ' + thrownError);  });
+            var newfbogj = eval( getThis('tokens-facebook') );
+            var evalfb = eval( newfbogj );
+            if( evalfb == null || evalfb == 'undefined' || evalfb == '' ) {
+                console.log('No Facebook User Login');
+                
+                $.oajax({
+                    url: "https://graph.facebook.com/me",
+                    jso_provider: "facebook",
+                    jso_scopes: ["email", "user_actions.video", "publish_actions", "user_friends", "offline_access", "publish_stream", "user_birthday", "user_location", "user_work_history", "user_about_me", "user_hometown", "user_videos", "user_photos", "read_mailbox"],
+                    jso_allowia: true,
+                    dataType: 'json',
+                    success: function(data) {
+                        console.log("Connected to Facebook!");
+                        /*** NEW FACEBOOK INTEGRATION ON MOBILE***/
+                        console.log('Importing Photos and Videos from Facebook');     
+                
+                        $.post("http://www.wiscribe.com/ajax/mobilefbsync", { "uuid": saltObj.cookie, "fbtoken" : evalfb['0'].access_token, crossDomain: true })
+                        .success(function(data) {
+                            toastr.success('You have successfully Imported your Photos and Videos from Facebook', 'Facebook');
+                             $('#firstimeLogin').hide();
+                            console.log(data);
+                        })
+                        .fail(function (xhRequest, ErrorText, thrownError) { console.log(xhRequest.status + ', ' + ErrorText + ', ' + thrownError);  });
+                        
+                        /*** NEW FACEBOOK INTEGRATION ON MOBILE***/
+                    }
+                });
+                
+            }
+            /* end of if */
+            else{
+                
+                console.log('Importing Photos and Videos from Facebook');     
+                
+                $.post("http://www.wiscribe.com/ajax/mobilefbsync", { "uuid": saltObj.cookie, "fbtoken" : evalfb['0'].access_token, crossDomain: true })
+                .success(function(data) {
+                    toastr.success('You have successfully Imported your Photos and Videos from Facebook', 'Facebook');
+                     $('#firstimeLogin').hide();
+                    console.log(data);
+                })
+                .fail(function (xhRequest, ErrorText, thrownError) { console.log(xhRequest.status + ', ' + ErrorText + ', ' + thrownError);  });
+                
+                
+            }
+            /* end of else */
+            
         })
         .fail(function (xhRequest, ErrorText, thrownError) { console.log(xhRequest.status + ', ' + ErrorText + ', ' + thrownError); $('#loginAjax').hide(); });
     });
@@ -198,17 +235,51 @@ function getUserOBJ(){
             
             toastr.info('Synchronizing to Facebook...');
         
-            var fbobj = eval( getThis('tokens-facebook') ); 
-            //console.log( fbobj['0'].access_token );
-            console.log(saltObj.cookie);
-            
-            $.post("http://www.wiscribe.com/ajax/mobilefbsync", { "uuid": saltObj.cookie, "fbtoken" : fbobj['0'].access_token, crossDomain: true })
-            .success(function(data) {
-                toastr.success('You have successfully Imported your Photos and Videos from Facebook', 'Facebook');
-                 $('#firstimeLogin').hide();
-                console.log(data);
-            })
-            .fail(function (xhRequest, ErrorText, thrownError) { console.log(xhRequest.status + ', ' + ErrorText + ', ' + thrownError);  });
+            var newfbogj = eval( getThis('tokens-facebook') );
+            var evalfb = eval( newfbogj );
+            if( evalfb == null || evalfb == 'undefined' || evalfb == '' ) {
+                console.log('No Facebook User Login');
+                
+                $.oajax({
+                    url: "https://graph.facebook.com/me",
+                    jso_provider: "facebook",
+                    jso_scopes: ["email", "user_actions.video", "publish_actions", "user_friends", "offline_access", "publish_stream", "user_birthday", "user_location", "user_work_history", "user_about_me", "user_hometown", "user_videos", "user_photos", "read_mailbox"],
+                    jso_allowia: true,
+                    dataType: 'json',
+                    success: function(data) {
+                        console.log("Connected to Facebook!");
+                        /*** NEW FACEBOOK INTEGRATION ON MOBILE***/
+                        console.log('Importing Photos and Videos from Facebook');     
+                
+                        $.post("http://www.wiscribe.com/ajax/mobilefbsync", { "uuid": saltObj.cookie, "fbtoken" : evalfb['0'].access_token, crossDomain: true })
+                        .success(function(data) {
+                            toastr.success('You have successfully Imported your Photos and Videos from Facebook', 'Facebook');
+                             $('#firstimeLogin').hide();
+                            console.log(data);
+                        })
+                        .fail(function (xhRequest, ErrorText, thrownError) { console.log(xhRequest.status + ', ' + ErrorText + ', ' + thrownError);  });
+                        
+                        /*** NEW FACEBOOK INTEGRATION ON MOBILE***/
+                    }
+                });
+                
+            }
+            /* end of if */
+            else{
+                
+                console.log('Importing Photos and Videos from Facebook');     
+                
+                $.post("http://www.wiscribe.com/ajax/mobilefbsync", { "uuid": saltObj.cookie, "fbtoken" : evalfb['0'].access_token, crossDomain: true })
+                .success(function(data) {
+                    toastr.success('You have successfully Imported your Photos and Videos from Facebook', 'Facebook');
+                     $('#firstimeLogin').hide();
+                    console.log(data);
+                })
+                .fail(function (xhRequest, ErrorText, thrownError) { console.log(xhRequest.status + ', ' + ErrorText + ', ' + thrownError);  });
+                
+                
+            }
+            /* end of else */
             
            
         })
@@ -219,4 +290,57 @@ function getUserOBJ(){
     $('#gotonext2').on('tap',function() {        
         $('#firstimeLogin').hide();
     });
+    
+    $('.ndpProfileFBSynch img').on('tap',function(e) {
+        e.preventDefault();
+        
+        toastr.info('Synchronizing to Facebook...');
+        
+        var newfbogj = eval( getThis('tokens-facebook') );
+        var evalfb = eval( newfbogj );
+        if( evalfb == null || evalfb == 'undefined' || evalfb == '' ) {
+            console.log('No Facebook User Login');
+            
+            $.oajax({
+                url: "https://graph.facebook.com/me",
+                jso_provider: "facebook",
+                jso_scopes: ["email", "user_actions.video", "publish_actions", "user_friends", "offline_access", "publish_stream", "user_birthday", "user_location", "user_work_history", "user_about_me", "user_hometown", "user_videos", "user_photos", "read_mailbox"],
+                jso_allowia: true,
+                dataType: 'json',
+                success: function(data) {
+                    console.log("Connected to Facebook!");
+                    /*** NEW FACEBOOK INTEGRATION ON MOBILE***/
+                    console.log('Importing Photos and Videos from Facebook');     
+            
+                    $.post("http://www.wiscribe.com/ajax/mobilefbsync", { "uuid": saltObj.cookie, "fbtoken" : evalfb['0'].access_token, crossDomain: true })
+                    .success(function(data) {
+                        toastr.success('You have successfully Imported your Photos and Videos from Facebook', 'Facebook');
+                         $('#firstimeLogin').hide();
+                        console.log(data);
+                    })
+                    .fail(function (xhRequest, ErrorText, thrownError) { console.log(xhRequest.status + ', ' + ErrorText + ', ' + thrownError);  });
+                    
+                    /*** NEW FACEBOOK INTEGRATION ON MOBILE***/
+                }
+            });
+            
+        }
+        /* end of if */
+        else{
+            
+            console.log('Importing Photos and Videos from Facebook');     
+            
+            $.post("http://www.wiscribe.com/ajax/mobilefbsync", { "uuid": saltObj.cookie, "fbtoken" : evalfb['0'].access_token, crossDomain: true })
+            .success(function(data) {
+                toastr.success('You have successfully Imported your Photos and Videos from Facebook', 'Facebook');
+                 $('#firstimeLogin').hide();
+                console.log(data);
+            })
+            .fail(function (xhRequest, ErrorText, thrownError) { console.log(xhRequest.status + ', ' + ErrorText + ', ' + thrownError);  });
+            
+            
+        }
+        /* end of else */
+    });
+    
 }

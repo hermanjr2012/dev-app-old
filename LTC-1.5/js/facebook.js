@@ -34,7 +34,7 @@ var deviceready = function() {
 */
     jso_configure({
         "facebook": {
-            client_id: "527956467287773",
+            client_id: "176682995858337",
             redirect_uri: "http://www.facebook.com/connect/login_success.html",
             authorization: "https://www.facebook.com/dialog/oauth",
             presenttoken: "qs"
