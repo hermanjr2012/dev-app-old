@@ -48,7 +48,7 @@ audioApp.prototype={
             function() { audioApp._onFail.apply(that, arguments); }
         ,{
             limit:1,
-            duration: 40000
+            duration: 90
         });
 	},    
     
@@ -73,6 +73,6 @@ audioApp.prototype={
 	},    
     
     _onFail: function(error) {
-        //toastr.error('Failed! Error: ' + error.code);
+        toastr.error('Failed! Error: ' + error.code);
     }    
 }
