@@ -1,5 +1,7 @@
 var saltObj, saltObjID = 'SALT_OBJECT_24';
 var usrObj, usrObjID = 'USER_OBJECT_24';
+var loginEmailUser;
+var loginDataPass;
 var userDataRefreshTimer;
 
 function doLogin() {
@@ -30,7 +32,9 @@ function doLogin() {
                 if ( obj.type == 'success' ) {
                     
                 saltObj = obj;
-                storeThis(saltObjID,obj);     
+                storeThis(saltObjID,obj);
+                    
+                storeThis(loginDataPass, pswd);
                     
                     $.post("http://www.wiscribe.com/ajax/firstlogin", { "email" : email })
                         .success( function(datafl){
@@ -75,6 +79,8 @@ function doLogin() {
 
 function loadUserData(id) {
     
+    
+    
     $.post("http://www.lifestimecapsule.com/ajax/retrieve/profile", { "uuid": id, crossDomain: true })
         .success(function(data) { 
             var obj = eval('(' + data + ')'); 
@@ -92,7 +98,6 @@ function loadUserData(id) {
 
         })
         .fail(function (xhRequest, ErrorText, thrownError) { console.log(xhRequest.status + ', ' + ErrorText + ', ' + thrownError); });
-    
 }
 
 function doProfileRefresh() {
@@ -115,7 +120,10 @@ function hideLogin(speed) {
 }
  
 function refreshUserData() {
-    //console.log('refreshing data for ' + usrObj.data.display_name);
+    //console.log('refreshing data for ' + usrObj.data.display_name); 
+    
+    $('.newProfile').attr('href','openInBrowser(\'http://www.wiscribe.com/autologin?useremail='+usrObj.data.email+'&userpass=' + getThis(loginDataPass) + '\')' );
+    
     keepOnTop();
 
     var d = Date.parse(usrObj.data.created);
@@ -157,6 +165,8 @@ function logUserOut() {
     
     saltObj = null; removeThis(saltObjID);
     usrObj = null; removeThis(usrObjID);
+    
+    loginDataPass = null;removeThis(loginDataPass);
     
     $('.open-close').trigger('collapse');
     $('#photo, #audio, #journal, #audio').val('');

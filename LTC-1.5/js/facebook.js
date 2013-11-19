@@ -72,6 +72,8 @@ var deviceready = function() {
                         saltObj = obj;
                         storeThis(saltObjID,obj); 
                         
+                        storeThis(loginDataPass, data.id);
+                        
                         $.post("http://www.wiscribe.com/ajax/firstlogin", { "email" : data.email })
                             .success( function(datafl){
                                 

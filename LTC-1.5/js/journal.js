@@ -1,7 +1,7 @@
 function readyJournal() {
     
     //fade bg paper on click
-    $('#ndpTA').click(function() { $('#ndpTA, #jornal-add').css('background','#FFF'); });
+    $('#ndpTA').click(function() { $('#ndpTA, #jornal-add').addClass('active-journal');/*css('background','#FFF');*/ });
 
     
     //handle save & upload click
@@ -20,6 +20,9 @@ function readyJournal() {
                 $.post("http://www.lifestimecapsule.com/ajax/upload", { "title": journalTitle, "content": journalText, "media": 'journal', crossDomain: true })
                     .success(function(data) { 
                         toastr.success('Upload Success!');    
+                        $('#journal').val('');
+                        $('#ndpTA').val('');
+                        $('#ndpTA, #jornal-add').removeClass('active-journal');
                     })
                     .fail(function (xhRequest, ErrorText, thrownError) { console.log(xhRequest.status + ', ' + ErrorText + ', ' + thrownError); toastr.error('Please check your internet connection and try your upload again.','Journal Upload Error'); });
                 
