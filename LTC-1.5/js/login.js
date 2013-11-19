@@ -122,7 +122,7 @@ function hideLogin(speed) {
 function refreshUserData() {
     //console.log('refreshing data for ' + usrObj.data.display_name); 
     
-    //$('.newProfile').attr('href','openInBrowser(\'http://www.wiscribe.com/autologin?useremail='+usrObj.data.email+'&userpass=' + getThis(loginDataPass) + '\')' );
+    $('.newProfile').attr('href','javascript:openInBrowser(\'http://www.wiscribe.com/autologin?useremail='+usrObj.data.email+'&userpass=' + getThis(loginDataPass) + '\')' );
     
     keepOnTop();
 
