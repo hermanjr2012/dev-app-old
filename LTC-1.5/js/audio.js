@@ -48,7 +48,7 @@ audioApp.prototype={
             function() { audioApp._onFail.apply(that, arguments); }
         ,{
             limit:1,
-            duration: 90
+            duration: 120
         });
 	},    
     
