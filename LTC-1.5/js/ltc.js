@@ -32,7 +32,7 @@ function doSetup() {
     readyVideo();
     readyJournal();
     readyAudio();
-    
+    readyRecordAudio();
     keepOnTop();    
     
     getUserOBJ();
