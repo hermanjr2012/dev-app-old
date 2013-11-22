@@ -8,32 +8,45 @@ function readyRecordAudio() {
 function recordaudioApp(){}
 
 recordaudioApp.prototype={
-    
     _captureCount: 0,
     _captureArray: null,     
 
     run: function(){
+        
         var that=this;
-        $('#recordAudioButton').on('tap',function() { that._recordeAudio.apply(that,arguments);  });
-    },
+        
+        $('#recordAudioButton').on('tap',function() { that._captureAudio.apply(that,arguments);  });
+     },   
+        
+    
 
-    _recordeAudio:function() {
-		var src = "myrecording.mp3";
-        var mediaRec = new Media(src, onSuccess, onError);
-
-        // Record audio
-        mediaRec.startRecord();
-
-        // Stop recording after 10 sec
-        var recTime = 0;
-        var recInterval = setInterval(function() {
-            recTime = recTime + 1;
-            setAudioPosition(recTime + " sec");
-            if (recTime >= 10) {
-                clearInterval(recInterval);
-                mediaRec.stopRecord();
-            }
-        }, 1000);
-	}
+	_captureAudio:function() {
+		var that = this;
+        
+		navigator.device.capture.captureAudio(
+            function() { that._captureSuccess.apply(that, arguments); }, 
+            function() { audioApp._onFail.apply(that, arguments); }
+        ,{
+            limit:1,
+            duration: 30
+        });
+	},    
+    
+	_captureSuccess:function(capturedFiles) {
+		var that = this;
+        
+        that._captureCount = capturedFiles.length;
+        that._captureArray = capturedFiles;
+        
+        var audioFile = that._captureArray[0].fullPath;
+        console.log(audioFile);
+        
+        
+	},    
+    
+    _onFail: function(error) {
+        toastr.error('Failed! Error: ' + error.code);
+    } 
+    
     
 }
