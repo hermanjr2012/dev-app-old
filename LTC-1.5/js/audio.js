@@ -59,23 +59,8 @@ audioApp.prototype={
         that._captureArray = capturedFiles;
         
         var audioFile = that._captureArray[0].fullPath;
-        var my_media = new Media(audioFile, onSuccess, onError);
-        var audioDur = my_media.getDuration();
+        var my_media = new Media(that._captureArray);
         
-        // onSuccess Callback
-        //
-        function onSuccess() {
-            console.log("playAudio():Audio Success");
-        }
-
-        // onError Callback 
-        //
-        function onError(error) {
-            alert('code: '    + error.code    + '\n' + 
-                  'message: ' + error.message + '\n');
-        }
-
-
         console.log(audioFile);
         
         if (audioFile.indexOf('3ga') > -1) {
@@ -84,7 +69,7 @@ audioApp.prototype={
             $('#audio-add').addClass('noPreview');
         } else {
             $('#audioArea #audioContainer').html('<audio controls style="width: 300px;"><source src="' + that._captureArray[0].fullPath + '"></audio>');
-            $('#audioDuration').text("Duration: <strong>" + audioDur + "</strong>");
+            $('#audioDuration').text("Duration: <strong>" + my_media.getDuration() + "</strong>");
             
             
             
