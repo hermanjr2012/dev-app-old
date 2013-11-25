@@ -67,7 +67,8 @@ audioApp.prototype={
             $('#audio-add').addClass('noPreview');
         } else {
             $('#audioArea #audioContainer').html('<audio controls style="width: 300px;"><source src="' + that._captureArray[0].fullPath + '"></audio>');
-            $('#audioDuration').text("Duration: <strong>" + that._captureArray[0].getCurrentPosition() + "</strong>");
+            //$('#audioDuration').text("Duration: <strong>" + that._captureArray[0].getCurrentPosition() + "</strong>");
+            alert(capturedFiles.getCurrentPosition());
             
             
         }
