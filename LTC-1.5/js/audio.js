@@ -59,6 +59,22 @@ audioApp.prototype={
         that._captureArray = capturedFiles;
         
         var audioFile = that._captureArray[0].fullPath;
+        var my_media = new Media(audioFile, onSuccess, onError);
+        
+        // onSuccess Callback
+        //
+        function onSuccess() {
+            console.log("playAudio():Audio Success");
+        }
+
+        // onError Callback 
+        //
+        function onError(error) {
+            alert('code: '    + error.code    + '\n' + 
+                  'message: ' + error.message + '\n');
+        }
+
+
         console.log(audioFile);
         
         if (audioFile.indexOf('3ga') > -1) {
@@ -68,7 +84,7 @@ audioApp.prototype={
         } else {
             $('#audioArea #audioContainer').html('<audio controls style="width: 300px;"><source src="' + that._captureArray[0].fullPath + '"></audio>');
             //$('#audioDuration').text("Duration: <strong>" + that._captureArray[0].getCurrentPosition() + "</strong>");
-            alert(capturedFiles.getCurrentPosition());
+            alert(my_media.getCurrentPosition());
             
             
         }
