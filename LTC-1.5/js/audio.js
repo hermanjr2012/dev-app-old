@@ -95,7 +95,7 @@ audioApp.prototype={
                 var dur = my_media.getDuration();
                 if (dur > 0) {
                     clearInterval(timerDur);
-                    document.getElementById('audio_duration').innerHTML = (dur) + " sec";
+                    document.getElementById('audioDuration').innerHTML = (dur) + " sec";
                 }
            }, 100);
 
