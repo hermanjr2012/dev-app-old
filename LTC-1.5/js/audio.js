@@ -59,7 +59,7 @@ audioApp.prototype={
         that._captureArray = capturedFiles;
         
         var audioFile = that._captureArray[0].fullPath;
-        var my_media = new Media(audioFile, onSuccess, onError);
+        var my_media = new Media(audioFile, function(i){});
         
         // onSuccess Callback
         //
