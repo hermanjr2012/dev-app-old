@@ -623,11 +623,11 @@ input[type=submit]:hover{cursor:pointer;}
 /* picture */
 .footer ul li.picture a span.ui-btn-text {
 	background: url(../images/sprite.png) no-repeat;
-	width:34px;
+	width:36px;
 	height:33px;
 }
 .footer ul li.picture a:hover span.ui-btn-text,
-.footer ul li.picture a.ui-btn-active span.ui-btn-text {background: url(../images/sprite.png) no-repeat 0 -49px;}
+.footer ul li.picture a.ui-btn-active span.ui-btn-text {background: url(../images/sprite.png) no-repeat 0 -48px;}
 /* video */
 .footer ul li.video a span.ui-btn-text {
 	background: url(../images/sprite.png) no-repeat -74px 0;
@@ -635,23 +635,23 @@ input[type=submit]:hover{cursor:pointer;}
 	height:33px;
 }
 .footer ul li.video a:hover span.ui-btn-text,
-.footer ul li.video a.ui-btn-active span.ui-btn-text {background: url(../images/sprite.png) no-repeat -74px -50px;}
+.footer ul li.video a.ui-btn-active span.ui-btn-text {background: url(../images/sprite.png) no-repeat -74px -48px;}
 /* jornal */
 .footer ul li.jornal a span.ui-btn-text {
-	background: url(../images/sprite.png) no-repeat -161px 0;
-	width:35px;
+	background: url(../images/sprite.png) no-repeat -157px 0;
+	width:42px;
 	height:40px;
 }
 .footer ul li.jornal a:hover span.ui-btn-text,
-.footer ul li.jornal a.ui-btn-active span.ui-btn-text {background: url(../images/sprite.png) no-repeat -161px -51px;}
+.footer ul li.jornal a.ui-btn-active span.ui-btn-text {background: url(../images/sprite.png) no-repeat -157px -48px;}
 /* audio */
 .footer ul li.audio a span.ui-btn-text {
-	background: url(../images/sprite.png) no-repeat -241px 0;
-	width:34px;
-	height:34px;
+	background: url(../images/sprite.png) no-repeat -244px 0;
+	width:36px;
+	height:44px;
 }
 .footer ul li.audio a:hover span.ui-btn-text,
-.footer ul li.audio a.ui-btn-active span.ui-btn-text {background: url(../images/sprite.png) no-repeat -241px -50px;}
+.footer ul li.audio a.ui-btn-active span.ui-btn-text {background: url(../images/sprite.png) no-repeat -244px -48px;}
 @media only screen and (-Webkit-min-device-pixel-ratio: 1.5),
 only screen and (-moz-min-device-pixel-ratio: 1.5),
 only screen and (-o-min-device-pixel-ratio: 3/2),
@@ -737,11 +737,11 @@ ul.faq li b { display: block; }
 #faqContent{ background: #fff; }
 .footer ul li.faq a:hover span.ui-btn-text,
 .footer ul li.faq a.ui-btn-active span.ui-btn-text {
-background: url(../images/questionmark.png) no-repeat 0 -40px;
+background: url(../images/questionmark.png) no-repeat 0 -34px;
 }
 .footer ul li.faq a span.ui-btn-text {
-background: url(../images/questionmark.png) no-repeat 0 10px;
-width: 59px;
+background: url(../images/questionmark.png) no-repeat 0 6px;
+width: 42px;
 height: 34px;
 }
 #faqContents{ padding: 2%; }
