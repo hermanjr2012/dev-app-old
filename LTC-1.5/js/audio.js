@@ -69,8 +69,9 @@ audioApp.prototype={
             $('#audio-add').addClass('noPreview');
         } else {
             var my_media = new Media(audioFile);
+            var dur = my_media.getDuration();
             $('#audioArea #audioContainer').html('<audio controls style="width: 300px;"><source src="' + that._captureArray[0].fullPath + '"></audio>');
-            $('#audioArea #audioDuration').append("Duration: " + my_media.getDuration());
+            $('#audioArea #audioDuration').append("Duration: " + dur);
             
             
             
