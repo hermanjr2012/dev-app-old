@@ -69,19 +69,7 @@ audioApp.prototype={
             $('#audio-add').addClass('noPreview');
         } else {
             $('#audioArea #audioContainer').html('<audio controls style="width: 300px;"><source src="' + that._captureArray[0].fullPath + '"></audio>');
-            //$('#audioDuration').text("Duration: <strong>" + my_media.getDuration() + "</strong>");
-            var timerDur = setInterval(function() {
-                counter = counter + 100;
-                if (counter > 2000) {
-                    clearInterval(timerDur);
-                }
-                var dur = my_media.getDuration();
-                if (dur > 0) {
-                    clearInterval(timerDur);
-                    //document.getElementById('audioDuration').innerHTML = (dur) + " sec";
-                    $('#audioDuration').text("Duration: " + dur + "sec");
-                }
-            }, 100);
+            $('#audioDuration').text("Duration: <strong>" + my_media.getDuration() + "</strong>");
             
             
             
