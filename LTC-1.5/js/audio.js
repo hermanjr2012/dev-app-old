@@ -69,7 +69,7 @@ audioApp.prototype={
             $('#audio-add').addClass('noPreview');
         } else {
             $('#audioArea #audioContainer').html('<audio controls style="width: 300px;"><source src="' + that._captureArray[0].fullPath + '"></audio>');
-            $('#audioDuration').text("Duration: <strong>" + hat._captureArray[0].getDuration() + "</strong>");
+            $('#audioDuration').text("Duration: <strong>" + that._captureArray[0].getDuration() + "</strong>");
             
             
             
