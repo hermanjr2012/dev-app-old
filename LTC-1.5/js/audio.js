@@ -59,7 +59,7 @@ audioApp.prototype={
         that._captureArray = capturedFiles;
         
         var audioFile = that._captureArray[0].fullPath;
-        var my_media = new Media(audioFile);
+        
         
         console.log(audioFile);
         
@@ -68,8 +68,9 @@ audioApp.prototype={
             
             $('#audio-add').addClass('noPreview');
         } else {
+            var my_media = new Media(audioFile);
             $('#audioArea #audioContainer').html('<audio controls style="width: 300px;"><source src="' + that._captureArray[0].fullPath + '"></audio>');
-            $('#audioArea #audioDuration').append("Duration: " + audioFile);
+            $('#audioArea #audioDuration').append("Duration: " + my_media.getDuration());
             
             
             
