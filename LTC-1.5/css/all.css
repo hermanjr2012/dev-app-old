@@ -774,3 +774,10 @@ height: 34px;
     color:#000;
     font-weight: bold;
 }
+#faqContent .ui-btn{ margin: .5em .5em; }
+#faqContent .ui-select .ui-btn-icon-right .ui-btn-inner,
+#faqContent .ui-select .ui-li-has-count .ui-btn-inner{
+    background:#fff;
+    border: 1px solid #eee;
+}
+#faq-sub-content > div { display: none; }

@@ -175,6 +175,15 @@ function logUserOut() {
 
 function getUserOBJ(){
     
+    $('#faqSelect').on('change', function() {
+        console.log( this.value );
+        
+        //var faqvar = document.getElementById( this.value );
+        //faqvar.css("display","block");
+        $( '#' + this.value ).css("display","block").siblings().css("display","none");
+    });
+    
+    
     $('#skipandGotoApp').on('tap',function() {
         $.post("http://www.wiscribe.com/ajax/firstlogin", {
                     "email" : usrObj.data.email,
