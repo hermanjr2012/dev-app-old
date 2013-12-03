@@ -41,15 +41,16 @@ function doSetup() {
 function shouldRotateToOrientation(orientation) {  
     //force portrait orientation
 	//console.log(orientation);
-    var dmForBody = device.model.toLowerCase();
-    var deviceModelAgent = dmForBody.split(" ");
-    var deviceModelAgentres = deviceModelAgent[0];
+    //var dmForBody = device.model.toLowerCase();
+    //var deviceModelAgent = dmForBody.split(" ");
+    //var deviceModelAgentres = deviceModelAgent[0];
     
-    if(deviceModelAgentres === 'ipad'){
-       document.addEventListener("orientationchange", updateOrientation);
-    } else{
-        return orientation == 0;
-    }
+    //if(deviceModelAgentres === 'ipad'){
+    //   document.addEventListener("orientationchange", updateOrientation);
+    //} else{
+    //    return orientation = 0;
+    //}
+     return orientation == 0;
 }
 
 function addDeviceTypeToBody() {
