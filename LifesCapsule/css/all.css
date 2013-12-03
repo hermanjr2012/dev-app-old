@@ -559,9 +559,18 @@ input[type=submit]:hover{cursor:pointer;}
     background-size:100% auto;
 }
 */
-#picture-add { background : #efefef; }
-#video-add { background : #efefef; }
-
+#picture-add {
+    background: url(../images/bg/Add-Photo-640x617.jpg) no-repeat 0 144px #efefef;
+    background-size:100% auto;
+    position: relative;     
+}
+#picture-add.ios-model-iphone5-1{ background: url(../images/iOS/7/Add-Photo-640x517.jpg) no-repeat 0 144px #efefef; background-size:100% auto; }
+#video-add {
+    background: url(../images/bg/Add-Video-640x617.jpg) no-repeat 0 144px #efefef;
+    background-size:100% auto;
+    position: relative;
+}
+#video-add.ios-model-iphone5-1{ background: url(../images/iOS/7/Add-Video-640x517.jpg) no-repeat 0 144px #efefef; background-size:100% auto; }
 .content-holder {
 	padding:0 0 0 21px;
 	overflow:hidden;
@@ -746,7 +755,7 @@ background: url(../images/sprite.png) no-repeat -316px -48px;
 }
 .footer ul li.faq a span.ui-btn-text {
 background: url(../images/sprite.png) no-repeat -316px 0;
-width: 50px;
+width: 48px;
 height: 34px;
 }
 

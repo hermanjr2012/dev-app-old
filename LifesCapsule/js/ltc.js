@@ -1,5 +1,4 @@
 document.addEventListener("deviceready", callReadyOnce, false);
-document.addEventListener("orientationchange", updateOrientation);
 
 var calledReady = false;
 function callReadyOnce() { if (!calledReady) { onDeviceReady(); calledReady = true; } }
@@ -42,7 +41,15 @@ function doSetup() {
 function shouldRotateToOrientation(orientation) {  
     //force portrait orientation
 	//console.log(orientation);
-	//return orientation == 0;
+    var dmForBody = device.model.toLowerCase();
+    var deviceModelAgent = dmForBody.split(" ");
+    var deviceModelAgentres = deviceModelAgent[0];
+    
+    if(deviceModelAgentres === 'ipad'){
+       document.addEventListener("orientationchange", updateOrientation);
+    } else{
+        return orientation == 0;
+    }
 }
 
 function addDeviceTypeToBody() {
@@ -69,13 +76,12 @@ function addDeviceTypeToBody() {
     $('body').addClass(dv + '-model-' + dm);
     
     if ( dm == 'iphone5-1' ) {
-        $('#photoImage').attr('src','images/iOS/7/Add-Photo-640x517.jpg');
-        $('#videoImage').attr('src','images/iOS/7/Add-Video-640x517.jpg');
+        $('#picture-add').addClass(dv + '-model-' + dm);
+        $('#video-add').addClass(dv + '-model-' + dm);
         $('#audio-add').addClass(dv + '-model-' + dm);
         $('#ndpTA').addClass(dv + '-model-' + dm);
     }
     
-    var dmForBody = device.model.toLowerCase();
     
 }
 

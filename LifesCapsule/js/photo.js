@@ -62,7 +62,7 @@ photoApp.prototype={
         navigator.camera.getPicture(
             function(imageURI) { 
             
-                $('#photoImage').attr('src',imageURI);
+                $('#photoImage').css('display','block').attr('src',imageURI);
                 
                 var mediaArray = [];
                 var mediaFile = {};
@@ -116,7 +116,7 @@ photoApp.prototype={
     _onPhotoURISuccess: function(imageURI) {
         var that = this;
         
-        $('#photoImage').attr('src',imageURI);
+        $('#photoImage').css('display','block').attr('src',imageURI);
 
         var mediaArray = [];
         var mediaFile = {};

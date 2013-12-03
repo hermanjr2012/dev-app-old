@@ -51,6 +51,7 @@ function uploadFile(pURI,fURI,fileName,title,media,lat,lng,content) {
             
 		    toastr.success('Upload Success!');
             $('#photo, #audio, #journal, #audio').val('');
+            $('#photoImage, #videoImage').css('display','none');
 		},
 		function(error) {
             console.log('Error uploading file ' + path + ': ' + error.code);
