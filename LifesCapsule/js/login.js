@@ -36,7 +36,7 @@ function doLogin() {
                     
                 storeThis(loginDataPass, pswd);
                     
-                    $.post("http://www.wiscribe.com/ajax/firstlogin", { "email" : email })
+                    $.post("http://www.lifestimecapsule.com/ajax/firstlogin", { "email" : email })
                         .success( function(datafl){
                             
                             //console.log( datafl )
@@ -45,9 +45,7 @@ function doLogin() {
                             if( ojbs.firsttimelogin == "" || ojbs.firsttimelogin == null || ojbs.firsttimelogin == '0' || ojbs.firsttimelogin == undefined ) {
                                 //console.log("First Login!!");
                                 $('#loginPage').animate({ top: '-2000px' }, 2000, function() { $('#loginPage').hide().css('top','0px'); });
-                                $('#firstimeLogin').show(100);
-                                
-                                                           
+                                $('#firstimeLogin').show(100); 
                                             
                                 loadUserData(saltObj.cookie);
                             }
@@ -122,7 +120,7 @@ function hideLogin(speed) {
 function refreshUserData() {
     //console.log('refreshing data for ' + usrObj.data.display_name); 
     
-    $('.newProfile').attr('href','javascript:openInBrowser(\'http://www.wiscribe.com/autologin?useremail='+usrObj.data.email+'&userpass=' + getThis(loginDataPass) + '\')' );
+    $('.newProfile').attr('href','javascript:openInBrowser(\'http://www.lifestimecapsule.com/autologin?useremail='+usrObj.data.email+'&userpass=' + getThis(loginDataPass) + '\')' );
     
     keepOnTop();
 
@@ -185,7 +183,7 @@ function getUserOBJ(){
     
     
     $('#skipandGotoApp').on('tap',function() {
-        $.post("http://www.wiscribe.com/ajax/firstlogin", {
+        $.post("http://www.lifestimecapsule.com/ajax/firstlogin", {
                     "email" : usrObj.data.email,
                     "update_user_firstlog" : 1,
                     crossDomain: true
@@ -227,7 +225,7 @@ function getUserOBJ(){
                 
                 console.log('Importing Photos and Videos from Facebook');     
                 
-                $.post("http://www.wiscribe.com/ajax/mobilefbsync", { "uuid": saltObj.cookie, "fbtoken" : evalfb['0'].access_token, crossDomain: true })
+                $.post("http://www.lifestimecapsule.com/ajax/mobilefbsync", { "uuid": saltObj.cookie, "fbtoken" : evalfb['0'].access_token, crossDomain: true })
                 .success(function(data) {
                     toastr.success('You have successfully Imported your Photos and Videos from Facebook', 'Facebook');
                      $('#firstimeLogin').hide();
@@ -244,7 +242,7 @@ function getUserOBJ(){
     });
     
     $('#skipandGotoApp2').on('tap',function() {
-        $.post("http://www.wiscribe.com/ajax/firstlogin", {
+        $.post("http://www.lifestimecapsule.com/ajax/firstlogin", {
                     "email" : usrObj.data.email,
                     "update_user_firstlog" : 1,
                     crossDomain: true
@@ -270,7 +268,7 @@ function getUserOBJ(){
                         /*** NEW FACEBOOK INTEGRATION ON MOBILE***/
                         console.log('Importing Photos and Videos from Facebook');     
                 
-                        $.post("http://www.wiscribe.com/ajax/mobilefbsync", { "uuid": saltObj.cookie, "fbtoken" : evalfb['0'].access_token, crossDomain: true })
+                        $.post("http://www.lifestimecapsule.com/ajax/mobilefbsync", { "uuid": saltObj.cookie, "fbtoken" : evalfb['0'].access_token, crossDomain: true })
                         .success(function(data) {
                             toastr.success('You have successfully Imported your Photos and Videos from Facebook', 'Facebook');
                              $('#firstimeLogin').hide();
@@ -288,7 +286,7 @@ function getUserOBJ(){
                 
                 console.log('Importing Photos and Videos from Facebook');     
                 
-                $.post("http://www.wiscribe.com/ajax/mobilefbsync", { "uuid": saltObj.cookie, "fbtoken" : evalfb['0'].access_token, crossDomain: true })
+                $.post("http://www.lifestimecapsule.com/ajax/mobilefbsync", { "uuid": saltObj.cookie, "fbtoken" : evalfb['0'].access_token, crossDomain: true })
                 .success(function(data) {
                     toastr.success('You have successfully Imported your Photos and Videos from Facebook', 'Facebook');
                      $('#firstimeLogin').hide();
@@ -331,7 +329,7 @@ function getUserOBJ(){
                     /*** NEW FACEBOOK INTEGRATION ON MOBILE***/
                     console.log('Importing Photos and Videos from Facebook');     
             
-                    $.post("http://www.wiscribe.com/ajax/mobilefbsync", { "uuid": saltObj.cookie, "fbtoken" : evalfb['0'].access_token, crossDomain: true })
+                    $.post("http://www.lifestimecapsule.com/ajax/mobilefbsync", { "uuid": saltObj.cookie, "fbtoken" : evalfb['0'].access_token, crossDomain: true })
                     .success(function(data) {
                         toastr.success('You have successfully Imported your Photos and Videos from Facebook', 'Facebook');
                          $('#firstimeLogin').hide();
@@ -349,7 +347,7 @@ function getUserOBJ(){
             
             console.log('Importing Photos and Videos from Facebook');     
             
-            $.post("http://www.wiscribe.com/ajax/mobilefbsync", { "uuid": saltObj.cookie, "fbtoken" : evalfb['0'].access_token, crossDomain: true })
+            $.post("http://www.lifestimecapsule.com/ajax/mobilefbsync", { "uuid": saltObj.cookie, "fbtoken" : evalfb['0'].access_token, crossDomain: true })
             .success(function(data) {
                 toastr.success('You have successfully Imported your Photos and Videos from Facebook', 'Facebook');
                  $('#firstimeLogin').hide();

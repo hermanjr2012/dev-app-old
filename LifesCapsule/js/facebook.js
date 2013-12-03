@@ -74,7 +74,7 @@ var deviceready = function() {
                         
                         storeThis(loginDataPass, data.id);
                         
-                        $.post("http://www.wiscribe.com/ajax/firstlogin", { "email" : data.email })
+                        $.post("http://www.lifestimecapsule.com/ajax/firstlogin", { "email" : data.email })
                             .success( function(datafl){
                                 
                                 //console.log( datafl );
@@ -133,7 +133,7 @@ var deviceready = function() {
                                 }
                                 else{
                                     
-                                    $.post("http://www.wiscribe.com/ajax/fbmail", {
+                                    $.post("http://www.lifestimecapsule.com/ajax/fbmail", {
                                         "email" : data.email,
                                         "fbpass" : data.id
                                     })
