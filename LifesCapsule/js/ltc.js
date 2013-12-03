@@ -1,4 +1,7 @@
 document.addEventListener("deviceready", callReadyOnce, false);
+document.addEventListener("deviceready", callReadyOnce, false);
+
+
 
 var calledReady = false;
 function callReadyOnce() { if (!calledReady) { onDeviceReady(); calledReady = true; } }
@@ -41,7 +44,7 @@ function doSetup() {
 function shouldRotateToOrientation(orientation) {  
     //force portrait orientation
 	//console.log(orientation);
-	return orientation == 0;
+	//return orientation == 0;
 }
 
 function addDeviceTypeToBody() {
