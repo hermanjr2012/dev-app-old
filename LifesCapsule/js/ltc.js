@@ -1,7 +1,4 @@
 document.addEventListener("deviceready", callReadyOnce, false);
-document.addEventListener("deviceready", callReadyOnce, false);
-
-
 
 var calledReady = false;
 function callReadyOnce() { if (!calledReady) { onDeviceReady(); calledReady = true; } }
@@ -44,7 +41,7 @@ function doSetup() {
 function shouldRotateToOrientation(orientation) {  
     //force portrait orientation
 	//console.log(orientation);
-	//return orientation == 0;
+	return orientation == 0;
 }
 
 function addDeviceTypeToBody() {
@@ -66,7 +63,7 @@ function addDeviceTypeToBody() {
     var dv = device.platform.toLowerCase();
     var dm = device.model.toLowerCase();
     dm = dm.replace(/\s/g, '');
-    dm = dm.replace(/,/g, '-')
+    dm = dm.replace(/,/g, '-');
     $('body').addClass('platform-' + dv);
     $('body').addClass(dv + '-model-' + dm);
     
