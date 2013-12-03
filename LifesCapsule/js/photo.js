@@ -52,7 +52,7 @@ photoApp.prototype={
             function() { that._captureSuccess.apply(that, arguments); }, 
             function() { that._onFail.apply(that, arguments); }
         ,{
-            limit:1, quality:25
+            limit:2, quality:25
         });
 	},    
     
@@ -75,7 +75,7 @@ photoApp.prototype={
                 
                 mediaArray.push(mediaFile);
         
-                that._captureCount = 1;
+                that._captureCount = 2;
                 that._captureArray = mediaArray;
                 
             },
