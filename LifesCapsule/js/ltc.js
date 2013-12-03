@@ -52,7 +52,7 @@ function addDeviceTypeToBody() {
     
     console.log('Device Model: ' + device.model);
 
-    console.log('Device UUID: ' + device.uuid);    
+    console.log('Device UUID: ' + device.uuid);
     console.log('Device Cordova: ' + device.cordova);
     
     console.log('width: ' + $(document).width() + ' height: ' + $(document).height());
