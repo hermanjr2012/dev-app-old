@@ -75,6 +75,8 @@ function addDeviceTypeToBody() {
         $('#ndpTA').addClass(dv + '-model-' + dm);
     }
     
+    var dmForBody = device.model.toLowerCase();
+    
 }
 
 function hideLoadBlock() { $('#loadBlock').fadeOut(1000); $('#wrap').fadeIn(1000); }
