@@ -543,6 +543,8 @@ input[type=submit]:hover{cursor:pointer;}
     background-size:100% auto;
     position: relative;     
 }
+
+#audio-add.ios-model-iphone5-1{ background: url(../images/iOS/7/Add-Voice-640x617.jpg) no-repeat 0 144px #efefef; background-size:100% auto; }
 /* #jornal-add */
 #jornal-add {
     background: url(../images/bg-jornal-add.png) repeat-y;
@@ -641,20 +643,20 @@ input[type=submit]:hover{cursor:pointer;}
 .footer ul li.video a.ui-btn-active span.ui-btn-text {background: url(../images/sprite.png) no-repeat -74px -48px;}
 /* jornal */
 .footer ul li.jornal a span.ui-btn-text {
-	background: url(../images/sprite.png) no-repeat -157px 0;
+    background: url(../images/sprite.png) no-repeat -234px 0;
 	width:42px;
 	height:44px;
 }
 .footer ul li.jornal a:hover span.ui-btn-text,
-.footer ul li.jornal a.ui-btn-active span.ui-btn-text {background: url(../images/sprite.png) no-repeat -157px -48px;}
+.footer ul li.jornal a.ui-btn-active span.ui-btn-text{ background: url(../images/sprite.png) no-repeat -234px -48px; }
 /* audio */
 .footer ul li.audio a span.ui-btn-text {
-	background: url(../images/sprite.png) no-repeat -234px 0;
+	background: url(../images/sprite.png) no-repeat -157px 0;
 	width:42px;
 	height:44px;
 }
 .footer ul li.audio a:hover span.ui-btn-text,
-.footer ul li.audio a.ui-btn-active span.ui-btn-text {background: url(../images/sprite.png) no-repeat -234px -48px;}
+.footer ul li.audio a.ui-btn-active span.ui-btn-text {background: url(../images/sprite.png) no-repeat -157px -48px;}
 @media only screen and (-Webkit-min-device-pixel-ratio: 1.5),
 only screen and (-moz-min-device-pixel-ratio: 1.5),
 only screen and (-o-min-device-pixel-ratio: 3/2),

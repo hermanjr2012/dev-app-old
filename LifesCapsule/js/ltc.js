@@ -48,7 +48,9 @@ function addDeviceTypeToBody() {
     console.log('-----------------------------------------');
     console.log('Device Platform: ' + device.platform);
     console.log('Device Name: ' + device.name);
-    console.log('Device Version: ' + device.version);    
+    console.log('Device Version: ' + device.version);   
+    
+    console.log('Device Model: ' + device.model);
 
     console.log('Device UUID: ' + device.uuid);    
     console.log('Device Cordova: ' + device.cordova);
@@ -59,7 +61,19 @@ function addDeviceTypeToBody() {
 
     
     var dv = device.platform.toLowerCase();
+    var dm = device.model.toLowerCase();
+    dm = dm.replace(/\s/g, '');
+    dm = dm.replace(/,/g, '-')
     $('body').addClass('platform-' + dv);
+    $('body').addClass(dv + '-model-' + dm);
+    
+    if ( dm == 'iphone5-1' ) {
+        $('#photoImage').attr('src','images/iOS/7/Add-Photo-640x517.jpg');
+        $('#videoImage').attr('src','images/iOS/7/Add-Video-640x517.jpg');
+        $('#audio-add').addClass(dv + '-model-' + dm);
+        $('#ndpTA').addClass(dv + '-model-' + dm);
+    }
+    
 }
 
 function hideLoadBlock() { $('#loadBlock').fadeOut(1000); $('#wrap').fadeIn(1000); }

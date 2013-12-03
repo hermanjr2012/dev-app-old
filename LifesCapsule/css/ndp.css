@@ -59,6 +59,10 @@ body { background: #c2c2c2 url(../images/login/ajax-loader.gif) no-repeat center
     border-style: none; background: transparent url(../images/bg/Journal-640x517.png) no-repeat top center;
     background-size: 90%;
 }
+#ndpTA.ios-model-iphone5-1{
+    background: transparent url(../images/iOS/7/Journal-640x617.png) no-repeat top center;
+    background-size: 90%;
+}
 
 /* profile */
 .ndpProfile { margin-bottom: 10px; }
