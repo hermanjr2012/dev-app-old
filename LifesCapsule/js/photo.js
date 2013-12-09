@@ -109,7 +109,8 @@ photoApp.prototype={
             quality: 50,
             destinationType: that._destinationType.FILE_URI,
             sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY,
-            mediaType: Camera.MediaType.PHOTO
+            mediaType: Camera.MediaType.PHOTO,
+            correctOrientation : true
         });        
     },    
     
@@ -126,6 +127,7 @@ photoApp.prototype={
         mediaFile.type = '';
         mediaFile.lastModifiedDate = '';
         mediaFile.size = 1;
+        mediaFile.correctOrientation = true;
         
         mediaArray.push(mediaFile);
 
