@@ -79,7 +79,7 @@ photoApp.prototype={
                 that._captureArray = mediaArray;
                 
             },
-            function() {  }, { quality: 50, destinationType: Camera.DestinationType.FILE_URI });
+            function() {  }, { correctOrientation : true, quality: 50, destinationType: Camera.DestinationType.FILE_URI });
     },
     
 	_captureSuccess:function(capturedFiles) {
@@ -127,7 +127,6 @@ photoApp.prototype={
         mediaFile.type = '';
         mediaFile.lastModifiedDate = '';
         mediaFile.size = 1;
-        mediaFile.correctOrientation = true;
         
         mediaArray.push(mediaFile);
 
