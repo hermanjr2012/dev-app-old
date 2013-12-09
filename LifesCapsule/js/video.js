@@ -53,7 +53,8 @@ videoApp.prototype={
             function() { videoApp._onFail.apply(that, arguments); }
         ,{
             limit:1,
-            duration: 40000
+            duration: 40000,
+            correctOrientation : true
         });
 	},    
     
@@ -94,7 +95,8 @@ videoApp.prototype={
             quality: 50,
             destinationType: navigator.camera.DestinationType.FILE_URI,
             sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY,
-            mediaType: navigator.camera.MediaType.VIDEO
+            mediaType: navigator.camera.MediaType.VIDEO,
+            correctOrientation : true
         });        
     },
     
