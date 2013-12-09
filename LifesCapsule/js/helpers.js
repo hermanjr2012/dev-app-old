@@ -50,6 +50,8 @@ function uploadFile(pURI,fURI,fileName,title,media,lat,lng,content) {
             console.log(result.response);
             console.log('------------------------------------------------');
             
+            $('#iPadTestUpload').text('------------- FILE UPLOAD RESULT --------------- | ' + result.bytesSent + ' bytes sent','(' + result.responseCode + ') Upload Success! | ' + result.response)
+            
 		    toastr.success('Upload Success!');
             $('#photo, #audio, #journal, #audio').val('');
             $('#photoImage, #videoImage').css('display','none');
