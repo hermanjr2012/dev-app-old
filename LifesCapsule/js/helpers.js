@@ -39,7 +39,8 @@ function uploadFile(pURI,fURI,fileName,title,media,lat,lng,content) {
 
     options.params = params;
     
-    alert('filename: ' + options.fileName + ', title: ' + params.title + ', media: ' + params.media + ', lat: ' + params.lat + ', lng: ' + params.lng + ', content: ' + params.content + ', uuid: ' + params.uuid + ', fileURI: ' + fileURI);
+    //alert('filename: ' + options.fileName + ', title: ' + params.title + ', media: ' + params.media + ', lat: ' + params.lat + ', lng: ' + params.lng + ', content: ' + params.content + ', uuid: ' + params.uuid + ', fileURI: ' + fileURI);
+    
     console.log('filename: ' + options.fileName + ', title: ' + params.title + ', media: ' + params.media + ', lat: ' + params.lat + ', lng: ' + params.lng + ', content: ' + params.content + ', uuid: ' + params.uuid + ', fileURI: ' + fileURI);
 
     try {
@@ -50,7 +51,7 @@ function uploadFile(pURI,fURI,fileName,title,media,lat,lng,content) {
             console.log(result.response);
             console.log('------------------------------------------------');
             
-            alert('------------- FILE UPLOAD RESULT --------------- |' + result.bytesSent + ' bytes sent' + '(' + result.responseCode + ') Upload Success! | ' + result.response);
+           // alert('------------- FILE UPLOAD RESULT --------------- |' + result.bytesSent + ' bytes sent' + '(' + result.responseCode + ') Upload Success! | ' + result.response);
             
 		    toastr.success('Upload Success!');
             $('#photo, #audio, #journal, #audio').val('');
