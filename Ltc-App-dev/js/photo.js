@@ -21,19 +21,22 @@ photoApp.prototype={
 	    that._destinationType = navigator.camera.DestinationType;        
         
         $('#capturePhotoButton').on('tap',function() { that._capturePic.apply(that,arguments);  });
-        $('#getPhotoFromLibraryButton').on('tap',function() { that._getPhotoFromLibrary.apply(that,arguments); });
+        //$('#getPhotoFromLibraryButton').on('tap',function() { that._getPhotoFromLibrary.apply(that,arguments); });
         
         $('#photoSaveUpload').click(function() {
+            var PhotosFromLib = $('#PhotosFromLib').val();
+            alert(PhotosFromLib);
             if (that._captureCount > 0) {
                 
                 var photoTitle = $('#photo').val(); keepOnTop();
+                
                 
                 if (photoTitle.length > 0) {
                     console.log('Uploading: ' + that._captureArray[0].fullPath);
                     toastr.info('Uploading...');                    
                     
                     //function uploadFile(postURI,fileURI,fileName,title,media,lat,lng,content)
-                    uploadFile('http://www.lifestimecapsule.com/ajax/upload',that._captureArray[0].fullPath,that._captureArray[0].fullPath,photoTitle,'photo',-1,-1,'');
+                    //uploadFile('http://www.lifestimecapsule.com/ajax/upload',that._captureArray[0].fullPath,that._captureArray[0].fullPath,photoTitle,'photo',-1,-1,'');
                     
                 } else {
                     toastr.error('Please provide a title for this photo.','Photo Upload Error');     
