@@ -7,6 +7,12 @@ function callReadyOnce() { if (!calledReady) { onDeviceReady(); calledReady = tr
 function onDeviceReady() { navigator.splashscreen.hide(); doSetup(); }
 
 
+function openLibrary(){
+    CameraRoll.getPhotos(function(photo) {
+         alert('x');
+    });
+}
+
 
 function doSetup() {
     
