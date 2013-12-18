@@ -9,7 +9,7 @@
     <license>MIT</license>
     <keywords>cordova,camera,camera roll</keywords>
 
-    <js-module src="www/CameraRoll.js" name="CameraRoll">
+    <js-module src="Plugins/www/CameraRoll.js" name="CameraRoll">
         <clobbers target="CameraRoll" />
     </js-module>
 
@@ -21,8 +21,8 @@
            </feature>
          </config-file>
 
-         <header-file src="src/ios/IonicCameraRoll.h" />
-         <source-file src="src/ios/IonicCameraRoll.m" />
+         <header-file src="Plugins/src/ios/IonicCameraRoll.h" />
+         <source-file src="Plugins/src/ios/IonicCameraRoll.m" />
  	     <framework src="ImageIO.framework" weak="true" />
  	     <framework src="CoreLocation.framework" />
  	     <framework src="CoreGraphics.framework" />
