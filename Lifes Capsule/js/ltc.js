@@ -7,12 +7,6 @@ function callReadyOnce() { if (!calledReady) { onDeviceReady(); calledReady = tr
 function onDeviceReady() { navigator.splashscreen.hide(); doSetup(); }
 
 
-function openLibrary(){
-    CameraRoll.getPhotos(function(photo) {
-         alert('x');
-    });
-}
-
 
 function doSetup() {
     
@@ -29,6 +23,15 @@ function doSetup() {
     //prevent scrolling - document.ontouchmove = function(e) {e.preventDefault()};
     function stopScrolling( touchEvent ) { touchEvent.preventDefault(); }
     document.addEventListener( 'touchmove' , stopScrolling , false );
+    
+		var picSource = navigator.camera.PictureSourceType;
+			picSource.PHOTOLIBRARY;
+		    CameraRoll.getPhotos(function(photos){
+                alert(photos);
+            }); 
+
+   
+
 
     //do login stuff
     doLogin();
@@ -94,4 +97,3 @@ function addDeviceTypeToBody() {
 
 function hideLoadBlock() { $('#loadBlock').fadeOut(1000); $('#wrap').fadeIn(1000); }
 function showStuff() { $('body').css('visibility','visible'); }
-
