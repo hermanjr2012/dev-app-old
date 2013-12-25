@@ -1,0 +1,26 @@
+#gallery-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+#gallery-list li {padding: 2px 2px 5px 2px;;float:left;width:31%}
+.thumbnails-wrapper{
+	
+	width: 100%;
+	max-width: 135px;
+	float: left;
+}
+
+#gallery img{
+	vertical-align: middle;
+	width:100%;
+}
+#gallery img.selected {
+	border:2px solid blue;
+}
+.selectme {display:block;}
+.thumbnails-wrapper input {
+  position:absolute;
+  top:0;
+  left:0;
+}

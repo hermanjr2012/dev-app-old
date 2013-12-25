@@ -23,15 +23,11 @@ function doSetup() {
     //prevent scrolling - document.ontouchmove = function(e) {e.preventDefault()};
     function stopScrolling( touchEvent ) { touchEvent.preventDefault(); }
     document.addEventListener( 'touchmove' , stopScrolling , false );
-    
-		var picSource = navigator.camera.PictureSourceType;
-			picSource.PHOTOLIBRARY;
-		    CameraRoll.getPhotos(function(photos){
-                alert(photos);
-            }); 
-
-   
-
+  
+/*
+    CameraRoll.getPhotos(function(pic){
+        alert(pic);
+    });*/
 
     //do login stuff
     doLogin();

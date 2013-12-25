@@ -99,7 +99,7 @@ function loadUserData(id) {
 }
 
 function doProfileRefresh() {
-    
+   
     $.post("http://www.lifestimecapsule.com/ajax/retrieve/profile", { "uuid": usrObj.cookie, crossDomain: true })
         .success(function(data) { 
             var obj = eval('(' + data + ')'); 
@@ -110,6 +110,7 @@ function doProfileRefresh() {
         .fail(function (xhRequest, ErrorText, thrownError) { console.log(xhRequest.status + ', ' + ErrorText + ', ' + thrownError); logUserOut(); });
     
     userDataRefreshTimer = setTimeout('doProfileRefresh()',60000);
+
 }
 
 function hideLogin(speed) { 
