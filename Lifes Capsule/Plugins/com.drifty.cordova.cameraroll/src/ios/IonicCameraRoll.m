@@ -12,10 +12,7 @@
 #import "IonicCameraRoll.h"
 #import <AssetsLibrary/ALAssetRepresentation.h>
 #import <CoreLocation/CoreLocation.h>
-#import <Cordova/NSData+Base64.h>
-#import <Cordova/CDV.h>
-#import <Cordova/CDVJSON.h>
-
+#define CDV_PHOTO_PREFIX @"cdv_photo_"
 
 @implementation IonicCameraRoll
 
@@ -64,29 +61,46 @@
                     NSDictionary *urls = [result valueForProperty:ALAssetPropertyURLs];
                     
                     [urls enumerateKeysAndObjectsUsingBlock:^(id key, NSURL *obj, BOOL *stop) {
-                        
-                        //NSString *imageName = [[result defaultRepresentation]filename];
-                        //NSArray *arrKeys = [[result valueForProperty:ALAssetPropertyURLs]allKeys];
-                        if([[result valueForProperty:ALAssetPropertyType]isEqualToString:ALAssetTypePhoto])
-                        {
-                            //NSString *imageName = [[result defaultRepresentation]filename];
-                            //NSData* xxx = nil;
-                            //NSURL* photoUrl = [[result valueForProperty:ALAssetPropertyURLs]objectForKey:[arrKeys objectAtIndex:0]];
-                            //UIImage *Image = [UIImage imageWithCGImage:[[result defaultRepresentation] fullScreenImage]];
-                            UIImage *ThumbnailImage = [UIImage imageWithCGImage:[result thumbnail]];
-                            //NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(ThumbnailImage)];
-                            NSData *imageData = [NSData dataWithData:UIImageJPEGRepresentation(ThumbnailImage,0.8)];
-                            //xxx = ThumbnailImage;
-                            //NSData *base64EncodedImage = [UIImageJPEGRepresentation(ThumbnailImage, 0.8) base64EncodingWithLineLength:0];
-                            
-                            // Send the URL for this asset back to the JS callback
-            CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[imageData base64EncodedString]];
 
-            //CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:obj.absoluteString];
-              //CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:imageName];
-                            [pluginResult setKeepCallbackAsBool:YES];
-                            [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+                        //NSString *imageName = [[result defaultRepresentation]filename];
+                        //NSData* xxx = nil;
+                        //NSURL* photoUrl = [[result valueForProperty:ALAssetPropertyURLs]objectForKey:[arrKeys objectAtIndex:0]];
+                        //UIImage *Image = [UIImage imageWithCGImage:[[result defaultRepresentation] fullScreenImage]];
+                        
+                        UIImage *Image = [UIImage imageWithCGImage:[[result defaultRepresentation] fullScreenImage]];
+                        
+                        //UIImage *ThumbnailImage = [UIImage imageWithCGImage:[result thumbnail]];
+                        //NSData *imageData = [NSData dataWithData:UIImagePNGRepresentation(ThumbnailImage)];
+                        NSData *imageData = [NSData dataWithData:UIImageJPEGRepresentation(Image, 0.8)];
+                        
+                        NSError* err = nil;
+                        NSString* docsPath = [NSTemporaryDirectory()stringByStandardizingPath];
+                        //NSError* err = nil;
+                        NSFileManager* fileMgr = [[NSFileManager alloc] init]; // recommended by apple (vs [NSFileManager defaultManager]) to be threadsafe
+                        // generate unique file name
+                        NSString* filePath;
+                        
+                        int i = 1;
+                        do {
+                            filePath = [NSString stringWithFormat:@"%@/%@%03d.%@", docsPath, CDV_PHOTO_PREFIX, i++,@"jpg"];
+                        } while ([fileMgr fileExistsAtPath:filePath]);
+                        
+                      
+                        // save file
+                        CDVPluginResult *pluginResult;
+                        if (![imageData writeToFile:filePath options:NSAtomicWrite error:&err]) {
+                            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_IO_EXCEPTION messageAsString:[err localizedDescription]];
                         }
+                        else {
+                            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[[NSURL fileURLWithPath:filePath] absoluteString]];
+                        }
+                        
+                        
+                        // Send the URL for this asset back to the JS callback
+            // CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:obj.absoluteString];
+
+                        [pluginResult setKeepCallbackAsBool:YES];
+                        [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
                         
                     }];
                 }];
@@ -99,7 +113,6 @@
     }];
     
 }
-
 
 @end
 

@@ -46,7 +46,23 @@ $(document).on('click','#uploadselected',function(e){
     
     var tmp = galleryFileList.bufferFileList();
     if( tmp instanceof Array ){
-        alert(galleryFileList.bufferFileList());
+        //alert(galleryFileList.bufferFileList());
+        var photoTitle = $('#photo').val(); 
+        if (tmp.length > 0) {
+            
+            if (photoTitle.length > 0) {
+                toastr.info('Uploading...');            
+                //function uploadFile(postURI,fileURI,fileName,title,media,lat,lng,content)
+                for (index = 0; index < tmp.length; ++index) {
+                    uploadFile('http://www.lifestimecapsule.com/ajax/upload',tmp[index],tmp[index],photoTitle,'photo',-1,-1,'');
+                }            
+            } else{
+                toastr.error('Please provide a title for this photo.','Photo Upload Error');
+            }
+            
+        } else {
+            toastr.error('Please select photo to upload','Photo Upload Error');     
+        }        
     }  
     
     
@@ -66,17 +82,22 @@ $(document).bind("pagebeforechange",function(e,data){
     		if(toPage === '#photogallery')	 {
                 
            
-              var domParent = $('#gallery-list');  
+              var domParent = $('#gallery-list');
+                 //check if images already loaded
+                if (domParent.html() == '') {
                  CameraRoll.getPhotos(function(picdata){
 
+                                      if(picdata!=null) {
                     var htmlString = '';
             		htmlString = htmlString + '<li><div class="thumbnails-wrapper">';
             		htmlString = htmlString + '	<input data-value="'+picdata+'" type="checkbox" name="checkbox-sel[]"  />';
-            		htmlString = htmlString + '	<img src="data:image/jpeg;base64,'+picdata+'"/>';
+            		htmlString = htmlString + '	<img src="'+picdata+'"/>';
             		htmlString = htmlString + '</div></li>';	
-            		domParent.append(htmlString);  
+            		domParent.append(htmlString);
+                                      }
 
-                });   
+                });
+                 }
                 
     		}
 	    }

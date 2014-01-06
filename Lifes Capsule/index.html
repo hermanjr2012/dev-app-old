@@ -10,7 +10,7 @@
  
 		
         <!--<link href="css/jquery.mobile.css" rel="stylesheet" /> -->
-        <link href="css/jquery.mobile-1.2.1.min.css" rel="stylesheet" />
+        <link href="css/jquery.mobile.css" rel="stylesheet" />
 		<link href="css/all.css" rel="stylesheet" />
         <link href="css/gallery.css" rel="stylesheet" />
         <link href="css/toastr.css" rel="stylesheet" />
@@ -37,6 +37,7 @@
        
         <script src="js/ltc.js"></script>
         <script src="js/custom-gallery.js"></script>
+		<script src="js/iscroll.js"></script>
         
         
     </head> 
@@ -136,13 +137,15 @@
     						</div>
     						<div id="getPhotoFromLibraryButton" class="holder">
     							<div class="submit">
-    								<input type="submit" />
-    							</div>
+                                    
+    								<input onclick="document.location+='#photogallery';return false;" type="submit" />
+                                </div>
     							<a href="#photogallery">+ from device</a>
     						</div> 
     					</fieldset>
     				</div>
     			</div>
+                
     			<!-- footer -->
     			<footer class="footer" data-role="footer" data-position="fixed" data-id="theFooter">
     				<!-- nav -->
@@ -161,18 +164,27 @@
             
 <!-- device photo library -->
 <div data-role="page" id="photogallery">
-		<div class="gallery-wrapper" style="overflow: scroll; overflow-x:hidden;height:100%">
+    
+		<div class="gallery-wrapper">
 				<div data-role="header"><h1>Gallery</h1></div>
 				<div data-role="content">
 					<div id="controls">
-					<a class="backtohome" href="#picture-add" data-role="button" data-inline="true">Back</a>
-					<a id="uploadselected" href="#" data-role="button" data-inline="true">upload</a>
+
                     <p>&nbsp;</p>
-						<div id="gallery"><ul id="gallery-list"></ul></div>	
-					</div>	
+                    <div id="gallery-wrapper-header">
+                        <a class="backtohome" href="#picture-add" data-role="button" data-inline="true">Back</a>
+                        <a id="uploadselected" href="#" data-role="button" data-inline="true">upload</a>
+                        
+                    </div>
+                      <div id="gallery-wrapper">  
+						<div id="gallery"><ul id="gallery-list"></ul></div>
+                      </div>    
+					</div>
+                    <div id="gallery-wrapper-footer"></div>
 				</div>
 		</div>
-	</div>	            	            
+	
+ </div>
 <!-- end device photo library -->            
             
             
@@ -616,5 +628,45 @@
     		</div>
             
         </div>
+        
+        <script type="text/javascript">
+            
+            var myScroll;
+            function loaded() {
+                myScroll = new iScroll('gallery-wrapper');
+            }
+            
+            document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+            
+            /* * * * * * * *
+             *
+             * Use this for high compatibility (iDevice + Android)
+             *
+             */
+            document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
+            /*
+             * * * * * * * */
+            
+            
+            /* * * * * * * *
+             *
+             * Use this for iDevice only
+             *
+             */
+            //document.addEventListener('DOMContentLoaded', loaded, false);
+            /*
+             * * * * * * * */
+            
+            
+            /* * * * * * * *
+             *
+             * Use this if nothing else works
+             *
+             */
+            //window.addEventListener('load', setTimeout(function () { loaded(); }, 200), false);
+            /*
+             * * * * * * * */
+            
+            </script>
     </body>
     </html>
