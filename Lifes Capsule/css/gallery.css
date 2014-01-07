@@ -1,11 +1,9 @@
-ul#gallery-list {
+#gallery-list {
     list-style: none;
     padding: 0;
     margin: 0;
-    padding-top:15px;
-    clear: both;
 }
-#gallery-list li {padding: 5px 2px; float:left;}
+#gallery-list li {padding: 2px 2px 5px 2px;;float:left;width:31%}
 .thumbnails-wrapper{
 	
 	width: 100%;
@@ -67,13 +65,11 @@ ul#gallery-list {
 
 #gallery-wrapper {
 	position:absolute; z-index:1;
-	top:45px; bottom:0px; left:0;
+	top:45px; bottom:48px; left:0;
 	width:100%;
 	/*background:#aaa;*/
-	overflow: auto !mportant;
+	overflow:auto;
     height: 100%;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
 }
 
 #scroller {
