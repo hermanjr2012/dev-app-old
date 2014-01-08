@@ -34,9 +34,6 @@ select{
 	vertical-align:middle;
 	color:#000;
 }
-textarea{
-    resize: none;
-}
 q{quotes: none;}
 q:before,
 q:after{content:"";}

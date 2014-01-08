@@ -20,14 +20,6 @@ function doSetup() {
     // warn if no internet
     if ( (navigator.connection.type.toLowerCase == 'none') && (navigator.connection.type.toLowerCase == '') ) { $('#lostConnection').show(); }
     
-    //prevent scrolling - document.ontouchmove = function(e) {e.preventDefault()};
-    //function stopScrolling( touchEvent ) { touchEvent.preventDefault(); }
-    //document.addEventListener( 'touchmove' , stopScrolling , false );
-  
-/*
-    CameraRoll.getPhotos(function(pic){
-        alert(pic);
-    });*/
 
     //do login stuff
     doLogin();

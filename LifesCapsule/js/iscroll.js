@@ -646,7 +646,7 @@ iScroll.prototype = {
 			return;
 		}
 
-		that.scrollTo(resetX, resetY, time || 0);
+		//that.scrollTo(resetX, resetY, time || 0);
 	},
 
 	_wheel: function (e) {
