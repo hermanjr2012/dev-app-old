@@ -54,8 +54,9 @@ function uploadFile(pURI,fURI,fileName,title,media,lat,lng,content) {
            // alert('------------- FILE UPLOAD RESULT --------------- |' + result.bytesSent + ' bytes sent' + '(' + result.responseCode + ') Upload Success! | ' + result.response);
             
 		    toastr.success('Upload Success!');
-            $('#photo, #audio, #journal, #audio').val('');
+            $('#photo, #audio, #journal, #video').val('');
             $('#photoImage, #videoImage').css('display','none');
+            $('#show-video-js').remove();
 		},
 		function(error) {
             console.log('Error uploading file ' + path + ': ' + error.code);
