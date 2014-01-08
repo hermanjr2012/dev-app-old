@@ -75,8 +75,8 @@ videoApp.prototype={
         var videoURL = that._captureArray[0].fullPath.toLowerCase(); 
 
         if (videoURL.indexOf('.mov') > -1 ) {
-            var code = '<video width="' + $(document).width() + '" height="' + ($(document).height()-340) + '"><source src="' + that._captureArray[0].fullPath + '"></video>';
-            $('#videoContent').css('background','#000').html(code);            
+            var code = '<video id="show-video-js" width="' + $(document).width() + '" height="' + ($(document).height()-340) + '"><source src="' + that._captureArray[0].fullPath + '"></video>';
+            $('#videoContent').html(code);      
         } else {
             $('#videoContent').html('').addClass('noPreview');
         }
