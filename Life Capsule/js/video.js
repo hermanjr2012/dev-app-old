@@ -66,7 +66,7 @@ videoApp.prototype={
 	},    
     
     _onFail: function(error) {
-        toastr.error('Failed! Error: ' + error.code);
+        toastr.error('No Video was Taken!');
     },
     
     

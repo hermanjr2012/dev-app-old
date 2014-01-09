@@ -95,7 +95,7 @@ photoApp.prototype={
     
     _onFail: function(error) {
         //toastr.error('Failed! Error: ' + error.code);
-        toastr.error('No Photo Taken!','Photo Upload Error');
+        toastr.error('No Photo Taken!');
     },
     
     
