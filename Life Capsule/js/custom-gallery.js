@@ -47,7 +47,7 @@ $(document).on('click','#uploadselected',function(e){
     var tmp = galleryFileList.bufferFileList();
     if( tmp instanceof Array ){
         //alert(galleryFileList.bufferFileList());
-        var photoTitle = $('#photo').val(); 
+        var photoTitle = $('#photosmulti').val(); 
         if (tmp.length > 0) {
             
             if (photoTitle.length > 0) {
