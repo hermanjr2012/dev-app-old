@@ -1,7 +1,18 @@
 function readyJournal() {
     
+    $('#ndpTA').on('change',function() {
+        
+        var jTCounter = $(this).val();
+        
+        if( jTCounter.length < 1 ){
+            $(this).removeClass('active-journal');
+        }
+    });
+    
     //fade bg paper on click
     $('#ndpTA').click(function() { $('#ndpTA').addClass('active-journal');/*css('background','#FFF');*/ });
+    
+    
 
     
     //handle save & upload click

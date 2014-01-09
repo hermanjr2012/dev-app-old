@@ -160,6 +160,6 @@ videoApp.prototype={
     },
     
     _onLibraryFail: function(message) {
-        toastr.error('Error: ' + message);
+        toastr.error('No Video was Taken!');
     },    
 }
