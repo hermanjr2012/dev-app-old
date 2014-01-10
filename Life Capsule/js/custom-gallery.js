@@ -55,7 +55,16 @@ $(document).on('click','#uploadselected',function(e){
                 //function uploadFile(postURI,fileURI,fileName,title,media,lat,lng,content)
                 for (index = 0; index < tmp.length; ++index) {
                     uploadFile('http://www.lifestimecapsule.com/ajax/upload',tmp[index],tmp[index],photoTitle,'photo',-1,-1,'');
-                }            
+                } 
+                
+                //Reset tile input
+                photoTitle.val('');
+                $('#gallery-list input[type="checkbox"]').removeAttr('checked');
+                $('.backtohome').trigger('click');
+                
+                
+                
+                
             } else{
                 toastr.error('Please provide a title for this photo.','Photo Upload Error');
             }

@@ -37,7 +37,7 @@
        
         <script src="js/ltc.js"></script>
         <script src="js/custom-gallery.js"></script>
-		<script src="js/iscroll.js"></script>
+		<!-- <script src="js/iscroll.js"></script> -->
         
         
     </head> 
@@ -50,8 +50,8 @@
                 <div class="c">
                     
                     
-                    <input id="loginUsr" type="text" placeholder="Username" value="" />
-                    <input id="loginPswd" type="password" placeholder="Password" value="" />
+                    <input id="loginUsr" type="text" placeholder="Username" value="hermanjr2010@gmail.com" />
+                    <input id="loginPswd" type="password" placeholder="Password" value="xxx123" />
                 
                     <img id="loginButton" alt="Sign In" src="images/login/signInButton.png" />
                     
@@ -175,7 +175,7 @@
                         
                     </div>
                         
-                    <div style="background: #403865;">
+                    <div style="background: #403865; position: fixed; top: 55px; width: 100%; z-index: 3;">
                         <div class="header-form">
         					<div class="hold-text">
         						<input type="text" name="name" id="photosmulti" placeholder="Please Provide Title for this Collection" />
@@ -184,7 +184,7 @@
         				</div>
                         
                     </div><!-- styled header-->
-                    <h3 style="text-align:center;">Please Select Photos</h3>
+                    <h3 style="text-align:center; position: fixed; width: 100%; top: 120px; z-index: 4;">Please Select Photos</h3>
                         
                       <div id="gallery-wrapper">
 						<div id="gallery">
@@ -685,45 +685,5 @@
     		</div>
             
         </div>
-        
-        <script type="text/javascript">
-            
-            var myScroll;
-            function loaded() {
-                myScroll = new iScroll('gallery-wrapper');
-            }
-            
-            document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
-            
-            /* * * * * * * *
-             *
-             * Use this for high compatibility (iDevice + Android)
-             *
-             */
-            document.addEventListener('DOMContentLoaded', function () { setTimeout(loaded, 200); }, false);
-            /*
-             * * * * * * * */
-            
-            
-            /* * * * * * * *
-             *
-             * Use this for iDevice only
-             *
-             */
-            //document.addEventListener('DOMContentLoaded', loaded, false);
-            /*
-             * * * * * * * */
-            
-            
-            /* * * * * * * *
-             *
-             * Use this if nothing else works
-             *
-             */
-            //window.addEventListener('load', setTimeout(function () { loaded(); }, 200), false);
-            /*
-             * * * * * * * */
-            
-            </script>
     </body>
     </html>

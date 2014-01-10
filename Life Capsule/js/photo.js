@@ -136,7 +136,7 @@ photoApp.prototype={
     },
     
     _onLibraryFail: function(message) {
-        alert('No Photos Selected!','Photo Upload Error');
+        toaster.error('No Photos Captured');
     },
     
 }
