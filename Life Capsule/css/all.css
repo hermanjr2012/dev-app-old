@@ -34,9 +34,6 @@ select{
 	vertical-align:middle;
 	color:#000;
 }
-textarea{
-    resize: none !important;
-}
 q{quotes: none;}
 q:before,
 q:after{content:"";}
@@ -138,7 +135,7 @@ input[type=submit]:hover{cursor:pointer;}
 .header-form #journal,
 .header-form #video,
 .header-form #photo,
-.header-form #photosmulti,
+.header-form #photomulti,
 .header-form #audio{
 	display:block;
 	border-bottom:1px solid #fefefe;
@@ -539,13 +536,8 @@ input[type=submit]:hover{cursor:pointer;}
 }
 /* .audio-block */
 #audio-add {
-/*	
-    background:#1e1e20 url(../images/bg-block.jpg) no-repeat 0 179px;
+    background: url(../images/bg/Add-Voice-640x517.jpg) no-repeat 0 144px #efefef;
     background-size:100% auto;
-*/
-	background: url(../images/bg/Add-Voice-640x517.jpg) no-repeat 0 144px #efefef;
-    background-size:100% auto;
-    position: relative;     
 }
 
 #audio-add.ios-model-iphone5-1{ background: url(../images/iOS/7/Add-Voice-640x617.jpg) no-repeat 0 144px #efefef; background-size:100% auto; }
@@ -553,28 +545,22 @@ input[type=submit]:hover{cursor:pointer;}
 #jornal-add {
     background: url(../images/bg-jornal-add.png) repeat-y;
 }
-/*
 #picture-add {
-    background: url(../images/bg/Add-Photo-640x517.jpg) no-repeat 0 144px #efefef;
+    background: url(../images/bg/Add-Photo-640x617.jpg) no-repeat 0 144px #efefef;
     background-size:100% auto;
 }
 #video-add {
-    background: url(../images/bg/Add-Video-640x517-.jpg) no-repeat 0 144px #efefef;
+    background: url(../images/bg/Add-Video-640x617.jpg) no-repeat 0 144px #efefef;
     background-size:100% auto;
 }
-*/
-#picture-add {
-    background: url(../images/bg/Add-Photo-640x517.jpg) no-repeat 0 144px #efefef;
+#picture-add.ios-model-iphone5-1{
+    background: url(../images/iOS/7/Add-Photo-640x617.jpg) no-repeat 0 144px #efefef;
     background-size:100% auto;
-    position: relative;     
 }
-#picture-add.ios-model-iphone5-1{ background: url(../images/iOS/7/Add-Photo-640x517.jpg) no-repeat 0 144px #efefef; background-size:100% auto; }
-#video-add {
-    background: url(../images/bg/Add-Video-640x517.jpg) no-repeat 0 144px #efefef;
+#video-add.ios-model-iphone5-1{
+    background: url(../images/iOS/7/Add-Video-640x617.jpg) no-repeat 0 144px #efefef;
     background-size:100% auto;
-    position: relative;
 }
-#video-add.ios-model-iphone5-1{ background: url(../images/iOS/7/Add-Video-640x517.jpg) no-repeat 0 144px #efefef; background-size:100% auto; }
 .content-holder {
 	padding:0 0 0 21px;
 	overflow:hidden;
@@ -614,7 +600,6 @@ input[type=submit]:hover{cursor:pointer;}
 .footer ul li a span.ui-btn-inner {
 	display:block;
 	width:100%;
-	height:100%;
 	min-height:54px;
 	padding:13px 0 0 !important;
 	background: url(../images/separator.png) no-repeat 0 50%;
@@ -656,22 +641,20 @@ input[type=submit]:hover{cursor:pointer;}
 .footer ul li.video a.ui-btn-active span.ui-btn-text {background: url(../images/sprite.png) no-repeat -74px -48px;}
 /* jornal */
 .footer ul li.jornal a span.ui-btn-text {
-   /* background: url(../images/sprite.png) no-repeat -234px 0; */
-    background: url(../images/sprite.png) no-repeat -157px 0;
-	width:42px;
-	height:44px;
-}
-.footer ul li.jornal a:hover span.ui-btn-text,
-.footer ul li.jornal a.ui-btn-active span.ui-btn-text{/* background: url(../images/sprite.png) no-repeat -234px -48px; */ background: url(../images/sprite.png) no-repeat -157px -48px; }
-/* audio */
-.footer ul li.audio a span.ui-btn-text {
-	/* background: url(../images/sprite.png) no-repeat -157px 0; */
     background: url(../images/sprite.png) no-repeat -234px 0;
 	width:42px;
 	height:44px;
 }
+.footer ul li.jornal a:hover span.ui-btn-text,
+.footer ul li.jornal a.ui-btn-active span.ui-btn-text{ background: url(../images/sprite.png) no-repeat -157px -48px; }
+/* audio */
+.footer ul li.audio a span.ui-btn-text {
+	background: url(../images/sprite.png) no-repeat -157px 0;
+	width:42px;
+	height:44px;
+}
 .footer ul li.audio a:hover span.ui-btn-text,
-.footer ul li.audio a.ui-btn-active span.ui-btn-text {/*background: url(../images/sprite.png) no-repeat -157px -48px;*/background: url(../images/sprite.png) no-repeat -234px -48px;}
+.footer ul li.audio a.ui-btn-active span.ui-btn-text {background: url(../images/sprite.png) no-repeat -234px -48px;}
 @media only screen and (-Webkit-min-device-pixel-ratio: 1.5),
 only screen and (-moz-min-device-pixel-ratio: 1.5),
 only screen and (-o-min-device-pixel-ratio: 3/2),
@@ -711,19 +694,15 @@ only screen and (min-device-pixel-ratio: 1.5) {
 		background-image: url(../images/sprite-3@2x.png);
 		background-size:39px 76px;
 	}
-    
-	.footer ul li.audio a span.ui-btn-text,
-	.footer ul li.audio a:hover span.ui-btn-text,
-	.footer ul li.audio a.ui-btn-active span.ui-btn-text{
-        background-image: url(../images/sprite@2x.png);
-		background-size:269px 90px;
-    }
 	.footer ul li.video a span.ui-btn-text,
 	.footer ul li.video a:hover span.ui-btn-text,
 	.footer ul li.video a.ui-btn-active span.ui-btn-text,
 	.footer ul li.jornal a:hover span.ui-btn-text,
 	.footer ul li.jornal a.ui-btn-active span.ui-btn-text,
 	.footer ul li.jornal a span.ui-btn-text,
+	.footer ul li.audio a span.ui-btn-text,
+	.footer ul li.audio a:hover span.ui-btn-text,
+	.footer ul li.audio a.ui-btn-active span.ui-btn-text,
 	.footer ul li.picture a:hover span.ui-btn-text,
 	.footer ul li.picture a.ui-btn-active span.ui-btn-text,
 	.footer ul li.picture a span.ui-btn-text,
